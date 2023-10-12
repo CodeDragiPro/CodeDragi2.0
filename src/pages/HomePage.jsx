@@ -1,12 +1,16 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import Expertise from '../components/Expertise';
+import Portfolio from '../components/Portfolio';
 
-const HomePage = () => {
+const Home = () => {
   return (
     <div className="">
-      <Hero/>
+      <Hero />
+      <Expertise />
+      <Portfolio />
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

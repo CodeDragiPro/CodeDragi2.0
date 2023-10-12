@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       <video
-        className="object-cover w-full h-full fixed top-0 left-0 z-10"
+        className="object-cover w-full h-full absolute top-0 left-0 z-10"
         autoPlay
         loop
         muted
@@ -15,7 +15,7 @@ const Hero = () => {
       >
         <source src={BackgroundVideo} type="video/mp4" />
       </video>
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center font-bold z-20">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center font-bold z-20">
         <div className="max-w-screen-xl p-4">
           <h1 className="text-8xl lg:text-9xl font-Montserrat">CODE DRAGI</h1>
           <p className="mt-4 text-xl lg:text-2xl text-code">GRAPHISTE // DEVELOPPEUR WEB & FRONT-END</p>

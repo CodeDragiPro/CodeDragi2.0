@@ -35,7 +35,7 @@ const Sound = () => {
       <div className="transform rotate-90 text-white mb-12">Musique</div>
       <FaArrowDown size={32} className="text-white" />
       <button
-        className="bg-black p-6 text-codedragi-blue rounded-full z-50"
+        className="p-6 text-codedragi-blue rounded-full z-50"
         onClick={toggleMute}
       >
         <div className="w-12 h-12 flex items-center justify-center border border-codedragi-blue rounded-full">
