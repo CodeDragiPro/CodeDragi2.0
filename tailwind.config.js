@@ -6,7 +6,12 @@ export default {
       Montserrat: ['Montserrat', 'sans'],
       Raleway: ['Raleway', 'sans'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        'codedragi-pink': '#FF48B0',
+        'codedragi-blue': '#66D9ED',
+      }
+    },
   },
   plugins: [],
 }

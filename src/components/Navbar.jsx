@@ -17,38 +17,38 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
+    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white font-raleway">
       <div className="flex items-center">
         <Link to="/" onClick={closeNav}>
           <img src={logoWeb} alt="Logo" className="h-12" />
         </Link>
       </div>
-      <ul className="hidden md:flex uppercase">
-        <li className="p-4 hover:text-codedragi-pink">
+      <ul className="hidden md:flex">
+        <li className="p-4 hover:text-codedragi-blue">
           <Link to="/" onClick={closeNav}>
-       ACCUEIL
+          <span className="text-codedragi-blue">01</span> // Acceuil
           </Link>
         </li>
         {location.pathname !== "/portfolio" && (
           <>
-            <li className="p-4 hover:text-codedragi-pink">
+            <li className="p-4 hover:text-codedragi-blue">
               <Link to="/portfolio" onClick={closeNav}>
-                PORTFOLIO
+               <span className="text-codedragi-blue">02</span> // Expertise
               </Link>
             </li>
-            <li className="p-4 hover:text-codedragi-pink">
+            <li className="p-4 hover:text-codedragi-blue">
               <a href="#section-skills" onClick={closeNav}>
-                SKILLS
+              <span className="text-codedragi-blue">03</span> // Portfolio
               </a>
             </li>
-            <li className="p-4 hover:text-codedragi-pink">
+            <li className="p-4 hover:text-codedragi-blue">
               <a href="#section-tarifs" onClick={closeNav}>
-                TARIFS
+              <span className="text-codedragi-blue">04</span> // Experiences
               </a>
             </li>
-            <li className="p-4 hover:text-codedragi-pink">
+            <li className="p-4 hover:text-codedragi-blue">
               <a href="#section-contact" onClick={closeNav}>
-                CONTACT
+              <span className="text-codedragi-blue">05</span> // Contact
               </a>
             </li>
           </>
@@ -66,31 +66,31 @@ const Navbar = () => {
         }
       >
         <img src={logoWeb} alt="Logo" className="h-12 w-auto pl-3 pt-2" />
-        <li className="p-4 border-b border-gray-600 hover:text-codedragi-pink">
+        <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
           <Link to="/" onClick={closeNav}>
-            ACCEUIL
+          <span className="text-codedragi-blue">01</span> // Acceuil
           </Link>
         </li>
         {location.pathname !== "/portfolio" && (
           <>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-pink">
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
               <Link to="/portfolio" onClick={closeNav}>
-                PORTFOLIO
+              <span className="text-codedragi-blue">02</span> // Expertise
               </Link>
             </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-pink">
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
               <a href="#section-skills" onClick={closeNav}>
-                SKILLS
+              <span className="text-codedragi-blue">03</span> // Portfolio
               </a>
             </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-pink">
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
               <a href="#section-tarifs" onClick={closeNav}>
-                TARIFS
+              <span className="text-codedragi-blue">04</span> // Experiences
               </a>
             </li>
-            <li className="p-4 hover:text-codedragi-pink">
+            <li className="p-4 hover:text-codedragi-blue">
               <a href="#section-contact" onClick={closeNav}>
-                CONTACT
+              <span className="text-codedragi-blue">05</span> // Contact
               </a>
             </li>
           </>
