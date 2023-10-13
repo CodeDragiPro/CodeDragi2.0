@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "title": "PixyManiaFolio",
+      "description": "PixyManiaFolio - Explorez la créativité infinie !",
+      "images": [
+        "https://repository-images.githubusercontent.com/318749996/a3394900-3aee-11eb-8623-c8795b89f756",
+        "https://repository-images.githubusercontent.com/318749996/a3394900-3aee-11eb-8623-c8795b89f756",
+        "https://repository-images.githubusercontent.com/318749996/a3394900-3aee-11eb-8623-c8795b89f756",
+        "https://repository-images.githubusercontent.com/318749996/a3394900-3aee-11eb-8623-c8795b89f756"
+      ],
+      "date": "2023-09-20",
+      "categories": ["Web Design", "React"],
+      "link" : "www.google.fr",
+      "Resume" : "PixyManiaFolio est un projet excitant développé en utilisant la technologie React. Il s'agit d'une plateforme créative conçue pour explorer et présenter une variété de projets artistiques, de designs, et de développements web. Le projet offre une expérience interactive aux utilisateurs, leur permettant de parcourir des galeries de projets, de découvrir des détails sur chaque création, et de suivre les liens vers les projets en direct. PixyManiaFolio est non seulement un moyen de mettre en valeur des réalisations créatives, mais aussi une vitrine de compétences en développement web, avec une interface utilisateur attrayante et une navigation fluide. Ce projet démontre comment React peut être utilisé pour créer une application web dynamique et visuellement impressionnante qui inspire la créativité."
+    },
+    {
+      "id": 2,
+      "title": "Projet 2",
+      "description": "Description du projet 2.",
+      "images": [
+        "https://repository-images.githubusercontent.com/266019111/15caae80-a37f-11ea-86c5-293f5f5a6b1c",
+        "https://www.interviewbit.com/blog/wp-content/uploads/2021/12/React-Projects.png",
+        "https://www.fastcomet.com/blog/wp-content/uploads/2022/06/what_can_you_build_with_ReactJS.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnMAnnb6Ikf_8-edCnBFrTIVK__lAhwXBF-yr-JMQa9Zc2o6JJe5LnQHE23tlOICUxtIM&usqp=CAU"
+      ],
+      "date": "2023-09-15",
+      "categories": ["Html", "Css", "Web Design"],
+      "link" : "www.google.fr",
+      "Resume" : "Projet 2 est une création innovante développée avec des technologies web modernes. Il présente une conception artistique et des fonctionnalités conviviales qui attirent l'attention. Les utilisateurs peuvent explorer une variété de projets, chacun offrant une expérience unique. Projet 2 met en valeur des compétences en HTML, CSS et JavaScript pour offrir une expérience utilisateur exceptionnelle."
+    },
+    {
+      "id": 3,
+      "title": "Projet 3",
+      "description": "Description du projet 3.",
+      "images": [
+        "https://blog.function12.io/content/images/2023/01/6-Potential-React-Web-App-Project-Ideas-to-work-on.png",
+        "https://blog.function12.io/content/images/2023/01/6-Potential-React-Web-App-Project-Ideas-to-work-on.png",
+        "https://blog.function12.io/content/images/2023/01/6-Potential-React-Web-App-Project-Ideas-to-work-on.png",
+        "https://blog.function12.io/content/images/2023/01/6-Potential-React-Web-App-Project-Ideas-to-work-on.png"
+      ],
+      "date": "2023-09-10",
+      "categories": ["Web Design", "Html", "Css", "Javascript"],
+      "link" : "www.google.fr",
+      "Resume" : "Projet 3 est une réalisation exceptionnelle qui combine des compétences en web design, HTML, CSS et JavaScript. Les utilisateurs peuvent découvrir des projets impressionnants, chacun offrant une perspective différente sur la créativité. Le projet 3 est un exemple de l'impact positif des technologies web modernes."
+    },
+    {
+      "id": 4,
+      "title": "Projet 4",
+      "description": "Description du projet 4.",
+      "images": [
+        "https://miro.medium.com/v2/resize:fit:1400/1*12Xgy-DmusIsxKVyJSZFOQ.png",
+        "https://miro.medium.com/v2/resize:fit:1400/1*12Xgy-DmusIsxKVyJSZFOQ.png",
+        "https://miro.medium.com/v2/resize:fit:1400/1*12Xgy-DmusIsxKVyJSZFOQ.png",
+        "https://miro.medium.com/v2/resize:fit:1400/1*12Xgy-DmusIsxKVyJSZFOQ.png"
+      ],
+      "date": "2023-09-05",
+      "categories": ["Web Development", "Design"],
+      "link" : "www.google.fr",
+      "Resume" : "Projet 4 est un exemple de développement web de haute qualité. Il utilise des techniques de conception web avancées pour créer une expérience visuelle immersive. Les utilisateurs peuvent explorer divers projets, chacun mettant en valeur des compétences en web design et en développement."
+    },
+    {
+      "id": 5,
+      "title": "Projet 5",
+      "description": "Description du projet 5.",
+      "images": [
+        "https://studio.uxpincdn.com/studio/wp-content/uploads/2023/03/shopify-reactjs-website-1024x584.png.webp",
+        "https://studio.uxpincdn.com/studio/wp-content/uploads/2023/03/shopify-reactjs-website-1024x584.png.webp",
+        "https://studio.uxpincdn.com/studio/wp-content/uploads/2023/03/shopify-reactjs-website-1024x584.png.webp",
+        "https://studio.uxpincdn.com/studio/wp-content/uploads/2023/03/shopify-reactjs-website-1024x584.png.webp"
+      ],
+      "date": "2023-08-30",
+      "categories": ["React", "Firebase"],
+      "link" : "www.google.fr",
+      "Resume" : "Projet 5 est une démonstration impressionnante de l'utilisation de React et de Firebase pour créer des applications web réactives et dynamiques. Les utilisateurs peuvent parcourir une sélection de projets basés sur React, avec des fonctionnalités interactives et une intégration transparente de Firebase pour une expérience utilisateur optimale."
+    },
+    {
+      "id": 6,
+      "title": "Projet 6",
+      "description": "Description du projet 6.",
+      "images": [
+        "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+        "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+        "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+        "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+      ],
+      "date": "2023-08-25",
+      "categories": ["Javascript", "Tailwind Css"],
+      "link" : "www.google.fr",
+      "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+    }
+  ]
+  

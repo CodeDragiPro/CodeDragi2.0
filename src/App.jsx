@@ -11,7 +11,7 @@ function App() {
       <div>
         <BrowserRouter>
         <Navbar/>
-        <Sound/>
+        {/* <Sound/> */}
           <Routes>
             <Route path="/" element={<HomePage/>}/>
           </Routes>
