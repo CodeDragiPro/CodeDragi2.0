@@ -1,6 +1,6 @@
 import React from 'react';
 import BackgroundVideo from '../assets/backgroundVideo.mp4';
-import { AiFillPhone } from 'react-icons/ai'; // Importez l'icône de téléphone
+import { AiFillPhone } from 'react-icons/ai'; 
 import { FaArrowDown } from 'react-icons/fa';
 
 const Hero = () => {
@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="max-w-screen-xl p-4">
           <h1 className="text-8xl lg:text-9xl font-Montserrat">CODE DRAGI</h1>
           <p className="mt-4 text-xl lg:text-2xl text-code">GRAPHISTE // DEVELOPPEUR WEB & FRONT-END</p>
-          <button className="mt-8 flex items-center text-white text-lg p-2 border-codedragi-blue border-2 rounded-3xl mx-auto">
+          <button className="mt-8 flex items-center text-white text-lg p-2 border-codedragi-blue border-2 rounded-3xl mx-auto animate-bounce">
             <AiFillPhone className="mr-2" />
             <a href="tel:+123456789" className="text-white">07.62.26.61.95</a> 
           </button>
