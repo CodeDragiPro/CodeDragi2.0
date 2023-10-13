@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logoWeb from "../assets/logoWeb.png";
 import { Link, useLocation } from "react-router-dom";
+import { CgMenuGridR } from 'react-icons/cg';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -17,10 +18,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 mx-auto px-4 text-white font-raleway w-full z-30 fixed">
+    <div className="flex justify-between items-center h-15 mx-auto px-4 text-white font-raleway w-full z-30 fixed bg-black">
       <div className="flex items-center">
         <Link to="/" onClick={closeNav}>
-          <img src={logoWeb} alt="Logo" className="h-12" />
+          <img src={logoWeb} alt="Logo" className="h-12 mt-6 animate-bounce" />
         </Link>
       </div>
       <ul className="hidden md:flex">
@@ -56,16 +57,16 @@ const Navbar = () => {
       </ul>
 
       <div onClick={handleNav} className="block md:hidden">
-        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+        {nav ? <AiOutlineClose size={20} /> : <CgMenuGridR size={20} />}
       </div>
       <ul
         className={
           nav
             ? "z-10 fixed uppercase left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"
-            : "ease-in-out duration-500 fixed left-[-100%]"
+            : "ease-in-out duration-300 fixed left-[-100%]"
         }
       >
-        <img src={logoWeb} alt="Logo" className="h-12 w-auto pl-3 pt-2" />
+        {/* <img src={logoWeb} alt="Logo" className="h-12 w-auto pl-3 pt-2" /> */}
         <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
           <Link to="/" onClick={closeNav}>
           <span className="text-codedragi-blue">01</span> // Acceuil

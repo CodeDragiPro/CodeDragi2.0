@@ -11,6 +11,7 @@
       ],
       "date": "2023-09-20",
       "categories": ["Web Design", "React"],
+      "type" : "Dévelopement Web",
       "link" : "www.google.fr",
       "Resume" : "PixyManiaFolio est un projet excitant développé en utilisant la technologie React. Il s'agit d'une plateforme créative conçue pour explorer et présenter une variété de projets artistiques, de designs, et de développements web. Le projet offre une expérience interactive aux utilisateurs, leur permettant de parcourir des galeries de projets, de découvrir des détails sur chaque création, et de suivre les liens vers les projets en direct. PixyManiaFolio est non seulement un moyen de mettre en valeur des réalisations créatives, mais aussi une vitrine de compétences en développement web, avec une interface utilisateur attrayante et une navigation fluide. Ce projet démontre comment React peut être utilisé pour créer une application web dynamique et visuellement impressionnante qui inspire la créativité."
     },
@@ -26,6 +27,7 @@
       ],
       "date": "2023-09-15",
       "categories": ["Html", "Css", "Web Design"],
+      "type" : "Design",
       "link" : "www.google.fr",
       "Resume" : "Projet 2 est une création innovante développée avec des technologies web modernes. Il présente une conception artistique et des fonctionnalités conviviales qui attirent l'attention. Les utilisateurs peuvent explorer une variété de projets, chacun offrant une expérience unique. Projet 2 met en valeur des compétences en HTML, CSS et JavaScript pour offrir une expérience utilisateur exceptionnelle."
     },
@@ -41,6 +43,7 @@
       ],
       "date": "2023-09-10",
       "categories": ["Web Design", "Html", "Css", "Javascript"],
+      "type" : "Design",
       "link" : "www.google.fr",
       "Resume" : "Projet 3 est une réalisation exceptionnelle qui combine des compétences en web design, HTML, CSS et JavaScript. Les utilisateurs peuvent découvrir des projets impressionnants, chacun offrant une perspective différente sur la créativité. Le projet 3 est un exemple de l'impact positif des technologies web modernes."
     },
@@ -56,6 +59,7 @@
       ],
       "date": "2023-09-05",
       "categories": ["Web Development", "Design"],
+      "type" : "Dévelopement Web",
       "link" : "www.google.fr",
       "Resume" : "Projet 4 est un exemple de développement web de haute qualité. Il utilise des techniques de conception web avancées pour créer une expérience visuelle immersive. Les utilisateurs peuvent explorer divers projets, chacun mettant en valeur des compétences en web design et en développement."
     },
@@ -71,6 +75,7 @@
       ],
       "date": "2023-08-30",
       "categories": ["React", "Firebase"],
+      "type" : "Dévelopement Web",
       "link" : "www.google.fr",
       "Resume" : "Projet 5 est une démonstration impressionnante de l'utilisation de React et de Firebase pour créer des applications web réactives et dynamiques. Les utilisateurs peuvent parcourir une sélection de projets basés sur React, avec des fonctionnalités interactives et une intégration transparente de Firebase pour une expérience utilisateur optimale."
     },
@@ -86,8 +91,137 @@
       ],
       "date": "2023-08-25",
       "categories": ["Javascript", "Tailwind Css"],
+      "type" : "Dévelopement Web",
       "link" : "www.google.fr",
       "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
-    }
+    },
+    {
+        "id": 7,
+        "title": "Projet 7",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 8,
+        "title": "Projet 8",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 9,
+        "title": "Projet 9",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 10,
+        "title": "Projet 10",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 11,
+        "title": "Projet 11",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 12,
+        "title": "Projet 12",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Design",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 13,
+        "title": "Projet 13",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      },
+      {
+        "id": 14,
+        "title": "Projet 14",
+        "description": "Description du projet 6.",
+        "images": [
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p",
+          "https://cdn.buttercms.com/Dt1SRzdKSg6Dqejkm13p"
+        ],
+        "date": "2023-08-25",
+        "categories": ["Javascript", "Tailwind Css"],
+        "type" : "Dévelopement Web",
+        "link" : "www.google.fr",
+        "Resume" : "Projet 6 est une réalisation innovante qui combine JavaScript et Tailwind CSS pour créer des projets web modernes et attrayants. Les utilisateurs peuvent explorer divers projets, chacun démontrant des compétences en développement web et en conception. Ce projet est une vitrine de l'adaptabilité de JavaScript et de CSS pour créer des sites web responsives et esthétiques."
+      }
   ]
   

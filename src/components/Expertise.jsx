@@ -7,7 +7,9 @@ const Expertise = () => {
        <video autoPlay loop muted className="fixed inset-0 object-cover w-full h-full -z-30">
         <source src={Loop} type="video/mp4" />
       </video>
-      <p className="text-center text-5xl font-bold mt-12">EXPERTISE</p>
+      <h1 className="mx-auto font-bold font-Montserrat text-5xl text-left mt-8">
+            <span className="text-codedragi-blue">02</span> // Expertise
+          </h1>
       <div className="flex flex-col md:flex-row items-center justify-center p-4">
         <div className="w-48 h-48 md:w-64 md:h-64 bg-black border border-white mx-2 md:mx-4 my-4 md:my-0 p-4 text-center flex flex-col justify-center">
           <div className="text-white">
