@@ -1,5 +1,4 @@
 import React from "react";
-import { FaArrowRight } from "react-icons/fa";
 
 const PortfolioCard = ({ title, type }) => {
   return (
@@ -9,7 +8,6 @@ const PortfolioCard = ({ title, type }) => {
           {title}
         </h1>
         <p>{type}</p>
-        <a href="#"><FaArrowRight className="text-codedragi-blue opacity-0 transform translate-x-1 transition-transform group-hover:translate-x-0 group-hover:opacity-100 " /></a>
       </div>
       <hr />
     </div>

@@ -1,21 +1,25 @@
 import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from './components/Navbar';
 import HomePage from "./pages/HomePage";
-import Sound from "./components/Soud";
-
+import PortfolioContent from './pages/PortfolioContent';
+import { AnimatePresence } from 'framer-motion';
+import ParticlesBg from "./components/ParticlesBg";
 function App() {
-
+const location = useLocation();
 
   return (
       <div>
-        <BrowserRouter>
+      
         <Navbar/>
-        {/* <Sound/> */}
-          <Routes>
+        <ParticlesBg/>
+        <AnimatePresence initial={false} mode='wait'>
+          <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage/>}/>
+            <Route path="/portfolio/:projectId" element={<PortfolioContent/>}/>
           </Routes>
-        </BrowserRouter>
+          </AnimatePresence>
+       
       </div>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Phone from "../assets/phone.mp4";
 import PortfolioCard from "./PortfolioCard";
 import data from "../data/data.json";
+import { Link } from "react-router-dom";
 
 const itemsPerPage = 10; 
 
@@ -56,7 +57,9 @@ const Portfolio = () => {
           <div className="pt-2">
           {currentItems.map((item) => (
             <div key={item.id} className="">
-              <PortfolioCard image={item.images[0]} title={item.title} type={item.type} />
+              <Link to={`/portfolio/${item.id}`}>
+              <PortfolioCard id={item.id} image={item.images[0]} title={item.title} type={item.type} />
+              </Link>
             </div>
           ))
           }
