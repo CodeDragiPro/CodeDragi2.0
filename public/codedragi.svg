@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 31.98 12.95">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Degradado_sin_nombre_925);
+      }
+
+      .cls-2 {
+        fill: url(#Degradado_sin_nombre_928);
+      }
+
+      .cls-3 {
+        fill: url(#Degradado_sin_nombre_926);
+      }
+
+      .cls-4 {
+        fill: url(#Degradado_sin_nombre_927);
+      }
+
+      .cls-5 {
+        fill: url(#Degradado_sin_nombre_924);
+      }
+
+      .cls-6 {
+        filter: url(#drop-shadow-1);
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="10"/>
+      <feGaussianBlur result="blur" stdDeviation="10"/>
+      <feFlood flood-color="#000" flood-opacity=".3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="Degradado_sin_nombre_928" data-name="Degradado sin nombre 928" x1="1.53" y1="4686.38" x2="11.04" y2="4676.86" gradientTransform="translate(0 4691.32) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3597ff"/>
+      <stop offset=".58" stop-color="#4c53de"/>
+      <stop offset=".73" stop-color="#4d4dda"/>
+      <stop offset=".9" stop-color="#513fd1"/>
+      <stop offset="1" stop-color="#5434ca"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_927" data-name="Degradado sin nombre 927" x1="4.56" y1="4686.37" x2="11.03" y2="4692.84" gradientTransform="translate(0 4691.32) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b55e3"/>
+      <stop offset=".27" stop-color="#247aff"/>
+      <stop offset="1" stop-color="#46edff"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_926" data-name="Degradado sin nombre 926" x1="11.03" y1="11.42" x2="23.97" y2="-1.52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6418b0"/>
+      <stop offset="0" stop-color="#6619b3"/>
+      <stop offset=".08" stop-color="#7929ce"/>
+      <stop offset=".16" stop-color="#8836e4"/>
+      <stop offset=".25" stop-color="#923ff3"/>
+      <stop offset=".35" stop-color="#9944fc"/>
+      <stop offset=".5" stop-color="#9b46ff"/>
+      <stop offset="1" stop-color="#b880ff"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_925" data-name="Degradado sin nombre 925" x1="23.97" y1="1.52" x2="30.45" y2="8.01" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8127ff"/>
+      <stop offset=".43" stop-color="#bd37ff"/>
+      <stop offset=".63" stop-color="#cc39ff"/>
+      <stop offset="1" stop-color="#f441ff"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_924" data-name="Degradado sin nombre 924" x1="-7891.36" y1="14.39" x2="-7897.83" y2="7.93" gradientTransform="translate(-7870.42 .08) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffa9ff"/>
+      <stop offset=".28" stop-color="#f6f"/>
+      <stop offset=".48" stop-color="#ff3cff"/>
+      <stop offset=".58" stop-color="#ff2dff"/>
+      <stop offset=".68" stop-color="#f828f9"/>
+      <stop offset=".81" stop-color="#e71bea"/>
+      <stop offset=".96" stop-color="#cb06d1"/>
+      <stop offset="1" stop-color="#c300ca"/>
+    </linearGradient>
+  </defs>
+  <g class="cls-6">
+    <polygon class="cls-2" points="6.48 12.94 0 6.47 3.06 3.41 12.56 12.94 6.48 12.94"/>
+    <polygon class="cls-4" points="3.05 3.42 6.46 0 12.55 0 6.08 6.47 3.05 3.42"/>
+    <polygon class="cls-3" points="19.41 .01 19.41 0 9.51 9.9 12.55 12.94 25.49 0 19.41 .01"/>
+    <polygon class="cls-1" points="31.98 6.48 25.5 0 25.49 0 22.45 3.04 28.92 9.53 31.98 6.48"/>
+    <polygon class="cls-5" points="28.93 9.53 25.51 12.95 19.42 12.95 25.89 6.48 28.93 9.53"/>
+  </g>
+</svg>
