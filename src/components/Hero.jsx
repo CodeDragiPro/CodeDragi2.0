@@ -21,7 +21,7 @@ const Hero = () => {
           <p className="mt-4 text-xl lg:text-2xl text-code">GRAPHISTE // DEVELOPPEUR WEB & FRONT-END</p>
           <button className="mt-8 flex items-center text-white text-lg p-2 border-codedragi-blue border-2 rounded-3xl mx-auto animate-bounce">
             <AiFillPhone className="mr-2" />
-            <a href="tel:+123456789" className="text-white">07.62.26.61.95</a> 
+            <a href="tel:+33762266195" className="text-white">07.62.26.61.95</a> 
           </button>
         </div>
       </div>

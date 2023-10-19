@@ -16,7 +16,7 @@ function ParticlesBg() {
     options={{
       "fullScreen": {
           "enable": true,
-          "zIndex": -10,
+          "zIndex": -20,
           
       },
       "particles": {
@@ -31,9 +31,9 @@ function ParticlesBg() {
               "value": "#fff"
           },
           "shape": {
-              "type": "star",
+              "type": "polygon",
               "options": {
-                  "sides": 5
+                  "sides": 10
               }
           },
           "opacity": {
@@ -51,8 +51,8 @@ function ParticlesBg() {
               "random": false,
               "anim": {
                   "enable": false,
-                  "speed": 40,
-                  "size_min": 0.1,
+                  "speed": 100,
+                  "size_min": 1,
                   "sync": false
               }
           },
@@ -107,26 +107,26 @@ function ParticlesBg() {
                   }
               },
               "bubble": {
-                  "distance": 400,
+                  "distance": 100,
                   "size": 40,
-                  "duration": 2,
+                  "duration": 20,
                   "opacity": 8,
-                  "speed": 3
+                  "speed": 6
               },
               "repulse": {
                   "distance": 200
               },
               "push": {
-                  "particles_nb": 4
+                  "particles_nb": 8
               },
               "remove": {
-                  "particles_nb": 2
+                  "particles_nb": 12
               }
           }
       },
       "retina_detect": true,
       "background": {
-          "color": "transparent",
+          "color": "#000000",
           "image": "",
           "position": "50% 50%",
           "repeat": "no-repeat",

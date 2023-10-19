@@ -1,12 +1,8 @@
 import React from "react";
-import Loop from '../assets/loop.mp4';
 
 const Expertise = () => {
   return (
     <div className="text-white font-Montserrat h-screen flex flex-col justify-center">
-       <video autoPlay loop muted className="fixed inset-0 object-cover w-full h-full -z-30 blur-lg">
-        <source src={Loop} type="video/mp4" />
-      </video>
       <h1 className="mx-auto font-bold font-Montserrat text-5xl text-left mt-8">
             <span className="text-codedragi-blue">02</span> // Expertise
           </h1>

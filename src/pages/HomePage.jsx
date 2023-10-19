@@ -5,6 +5,7 @@ import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
 import Experience from '../components/Experience';
 import PageTransition from '../components/PageTransition';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Portfolio />
       <Contact/>
       <Experience/>
+      <Footer/>
     </PageTransition>
   );
 };

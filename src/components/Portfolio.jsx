@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Phone from "../assets/phone.mp4";
 import PortfolioCard from "./PortfolioCard";
 import data from "../data/data.json";
 import { Link } from "react-router-dom";
 
-const itemsPerPage = 10; 
+const itemsPerPage = 10;
 
 const Portfolio = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedType, setSelectedType] = useState("Tous");
+  const [hoveredIndex, setHoveredIndex] = useState(-1); // État pour gérer le survol
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const filteredData = selectedType === "Tous" ? data : data.filter(item => item.type === selectedType);
+  const filteredData = selectedType === "Tous" ? data : data.filter((item) => item.type === selectedType);
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => {
@@ -20,15 +20,18 @@ const Portfolio = () => {
 
   const handleTypeFilter = (type) => {
     setSelectedType(type);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
+
+  const handlePortfolioHover = (index) => {
+    setHoveredIndex(index);
+  };
+
   return (
-    <div className="bg-black backdrop-blur-sm">
+    <div className=" backdrop-blur-sm">
       <div className="text-white w-full h-full flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2 flex items-center justify-center">
-          <video autoPlay loop muted className="w-full h-2/3">
-            <source src={Phone} type="video/mp4" />
-          </video>
+        <div className="w-full md:w-1/2 flex items-center p-4">
+          <img src={hoveredIndex !== -1 ? currentItems[hoveredIndex].images[0] : currentItems[0].images[0]} alt="Portfolio Image" className="w-full rounded-lg pl-0 aspect-ratio-4/3" />
         </div>
 
         <div className="w-full text-left p-4 md:w-1/2">
@@ -55,32 +58,31 @@ const Portfolio = () => {
             </button>
           </div>
           <div className="pt-2">
-          {currentItems.map((item) => (
-            <div key={item.id} className="">
-              <Link to={`/portfolio/${item.id}`}>
-              <PortfolioCard id={item.id} image={item.images[0]} title={item.title} type={item.type} />
-              </Link>
-            </div>
-          ))
-          }
+            {currentItems.map((item, index) => (
+              <div
+                key={item.id}
+                onMouseEnter={() => handlePortfolioHover(index)} 
+                onMouseLeave={() => handlePortfolioHover(-1)}
+              >
+                <Link to={`/portfolio/${item.id}`}>
+                  <PortfolioCard id={item.id} image={item.images[0]} title={item.title} type={item.type} />
+                </Link>
+              </div>
+            ))}
           </div>
           <ul className="flex text-white mt-4">
-            {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }).map(
-              (val, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => paginate(index + 1)}
-                    className={`mx-2 cursor-pointer ${
-                      currentPage === index + 1
-                        ? "text-codedragi-blue"
-                        : "hover:text-codedragi-blue"
-                    }`}
-                  >
-                    {index + 1}
-                  </button>
-                </li>
-              )
-            )}
+            {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }).map((val, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => paginate(index + 1)}
+                  className={`mx-2 cursor-pointer ${
+                    currentPage === index + 1 ? "text-codedragi-blue" : "hover:text-codedragi-blue"
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
