@@ -1,8 +1,8 @@
 import React from "react";
-import { GiPaintBucket } from "react-icons/gi";
+import { FaFont } from 'react-icons/fa';
 
 const BrandGuideline = ({ color }) => {
-  return <GiPaintBucket color={color} size={25} />;
+  return <FaFont color={color} size={25} className="mx-1"/>;
 };
 
 export default BrandGuideline;

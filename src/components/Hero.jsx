@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       <video
-        className="object-cover w-full h-full absolute top-0 left-0 z-10"
+        className="object-cover w-full h-full absolute top-0 left-0"
         autoPlay
         loop
         muted
@@ -17,8 +17,8 @@ const Hero = () => {
       </video>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center font-bold z-20">
         <div className="max-w-screen-xl p-4">
-          <h1 className="text-8xl lg:text-9xl font-Montserrat">CODE DRAGI</h1>
-          <p className="mt-4 text-xl lg:text-2xl text-code">GRAPHISTE // DEVELOPPEUR WEB & FRONT-END</p>
+          <h1 className="text-8xl lg:text-9xl">CODE DRAGI</h1>
+          <p className="mt-4 text-xl lg:text-2xl">GRAPHISTE // DEVELOPPEUR WEB & FRONT-END</p>
           <button className="mt-8 flex items-center text-white text-lg p-2 border-codedragi-blue border-2 rounded-3xl mx-auto animate-bounce">
             <AiFillPhone className="mr-2" />
             <a href="tel:+33762266195" className="text-white">07.62.26.61.95</a> 

@@ -1,20 +1,21 @@
 import React from "react";
+import TitlesCategory from "./TitlesCategory";
 
 const Contact = () => {
   return (
-    <div className="backdrop-blur-sm text-white p-4 pt-4 md:flex ">
+    <div className=" text-white p-4 pt-4 md:flex ">
       <div className="w-full md:w-1/2 md:pr-4 mb-4 md:mb-0">
-        <h1 className="mx-auto font-bold font-Montserrat text-4xl text-left ">
-          <span className="text-codedragi-blue">04</span> // Contact
-        </h1>
-        <p className="mt-2">
+      <div className='py-8 text-4xl'>
+        <TitlesCategory text="Contact" exponent="4"/>
+      </div>
+        <p className="font-bold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
           omnis fuga necessitatibus veritatis molestiae vitae molestias, quas ea
           sapiente perspiciatis qui voluptatibus animi asperiores numquam iusto
           recusandae explicabo esse ducimus?
         </p>
-        <div className="">
-          <h2 className="text-xl font-bold mt-2">Mes informations personnelles :</h2>
+        <div>
+          <h2 className="text-xl font-bold py-4">Mes informations personnelles :</h2>
           <div className="border-2 rounded border-codedragi-blue mt-2">
             <input
               type="text"
@@ -32,7 +33,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-full md:w-1/2 md:pl-4">
-        <div className="">
+        <div>
           <form>
             <div className="mb-4">
               <label htmlFor="name" className="block text-codedragi-blue font-bold mb-2">

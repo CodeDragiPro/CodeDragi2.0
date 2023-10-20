@@ -2,10 +2,10 @@ import React from 'react';
 
 const IconSkills = ({ icon, text }) => {
   return (
-    <div className="px-2 mt-4 text-center">
-          {icon}
-          <p className="text-white font-bold mt-2">{text}</p>
-        </div>
+    <div className="flex flex-col items-center p-4">
+      {icon}
+      <p className="text-white font-bold text-xs mt-2">{text}</p>
+    </div>
   );
 };
 

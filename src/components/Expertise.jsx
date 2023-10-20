@@ -1,11 +1,12 @@
 import React from "react";
+import TitlesCategory from "./TitlesCategory";
 
 const Expertise = () => {
   return (
-    <div className="text-white font-Montserrat h-screen flex flex-col justify-center">
-      <h1 className="mx-auto font-bold font-Montserrat text-5xl text-left mt-8">
-            <span className="text-codedragi-blue">02</span> // Expertise
-          </h1>
+    <div className="text-white h-screen flex flex-col justify-center">
+        <div className='py-8 text-center text-4xl'>
+        <TitlesCategory text="Expertise" exponent="2"/>
+      </div>
       <div className="flex flex-col md:flex-row items-center justify-center p-4">
         <div className="w-48 h-48 md:w-64 md:h-64 bg-black border border-white mx-2 md:mx-4 my-4 md:my-0 p-4 text-center flex flex-col justify-center backdrop-blur-sm bg-white/30">
           <div className="text-white">

@@ -15,7 +15,6 @@ const Home = () => {
       <Portfolio />
       <Contact/>
       <Experience/>
-      <Footer/>
     </PageTransition>
   );
 };

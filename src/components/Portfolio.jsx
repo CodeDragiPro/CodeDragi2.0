@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PortfolioCard from "./PortfolioCard";
 import data from "../data/data.json";
 import { Link } from "react-router-dom";
+import TitlesCategory from "./TitlesCategory";
 
 const itemsPerPage = 10;
 
@@ -28,25 +29,25 @@ const Portfolio = () => {
   };
 
   return (
-    <div className=" backdrop-blur-sm">
+    <div>
       <div className="text-white w-full h-full flex flex-col md:flex-row">
         <div className="w-full md:w-1/2 flex items-center p-4">
           <img src={hoveredIndex !== -1 ? currentItems[hoveredIndex].images[0] : currentItems[0].images[0]} alt="Portfolio Image" className="w-full rounded-lg pl-0 aspect-ratio-4/3" />
         </div>
 
         <div className="w-full text-left p-4 md:w-1/2">
-          <h1 className="mx-auto font-bold font-Montserrat text-4xl text-left mt-8">
-            <span className="text-codedragi-blue">03</span> // Mon Portfolio
-          </h1>
-          <p className="font-Raleway text-xl mt-4">
+        <div className='py-8 text-4xl'>
+        <TitlesCategory text="Projets" exponent="3"/>
+      </div>
+          <p className="font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab
             nesciunt pariatur incidunt dolor placeat dignissimos vero
             praesentium qui magni aperiam quam, provident quas assumenda. Quas
             ducimus amet impedit debitis!
           </p>
 
-          <div className="w-full  flex items-center text-white font-Montserrat mt-10">
-            <button className={`cursor-pointer mx-1 ${selectedType === "Tous" && "text-codedragi-blue"}`} onClick={() => handleTypeFilter("Tous")}>
+          <div className="w-full  flex items-center text-white mt-10">
+            <button className={`cursor-pointer ${selectedType === "Tous" && "text-codedragi-blue"}`} onClick={() => handleTypeFilter("Tous")}>
               Tous <span className="text-codedragi-blue pl-2"> / </span>
             </button>
             <button className={`cursor-pointer mx-1 ${selectedType === "Dévelopement Web" && "text-codedragi-blue"}`} onClick={() => handleTypeFilter("Dévelopement Web")}>
