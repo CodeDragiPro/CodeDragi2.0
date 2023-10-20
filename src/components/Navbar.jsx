@@ -17,10 +17,12 @@ const Navbar = () => {
     setNav(false);
   };
 
-  const isPortfolioPage = location.pathname.includes("/portfolio");
-  const isAdminPage = location.pathname.startsWith("/admin");
-  const isErrorPage = location.pathname.startsWith("/error");
-  const isUnknownRoute = location.pathname === "*"; 
+  const hasPortfolioId =
+    location.pathname.includes("/portfolio/") ||
+    location.pathname === "/login" ||
+    location.pathname === "/admin" ||
+    location.pathname === "/admin/new" ||
+    location.pathname === "/admin/list";
 
   return (
     <div className="flex justify-between items-center h-15 mx-auto px-4 text-white w-full z-30 fixed bg-black">
@@ -30,10 +32,61 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className="hidden md:flex">
-        {!(isErrorPage || isUnknownRoute) && (
-          <NavItem to="/" text="Accueil" closeNav={closeNav} active={!isPortfolioPage && !isAdminPage} />
+        <li className="p-4 hover:text-codedragi-blue">
+          <Link to="/" onClick={closeNav}>
+            <TitlesCategory text="Accueil" exponent="1" />
+          </Link>
+        </li>
+        {!hasPortfolioId && (
+          <>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="#Expertise" onClick={closeNav}>
+                <TitlesCategory text="Expertise" exponent="2" />
+              </Link>
+            </li>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="#Projets" onClick={closeNav}>
+                <TitlesCategory text="Projets" exponent="3" />
+              </Link>
+            </li>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="#Contact" onClick={closeNav}>
+                <TitlesCategory text="Contact" exponent="4" />
+              </Link>
+            </li>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="#Skills" onClick={closeNav}>
+                <TitlesCategory text="Skills" exponent="5" />
+              </Link>
+            </li>
+          </>
         )}
-        {renderNavItems(isPortfolioPage, isAdminPage, closeNav, isErrorPage, isUnknownRoute)}
+        {(location.pathname === "/admin" ||
+          location.pathname === "/admin/new" ||
+          location.pathname === "/admin/list") && (
+          <>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="/admin" onClick={closeNav}>
+                <TitlesCategory text="Dashboard" exponent="2" />
+              </Link>
+            </li>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="/admin/new" onClick={closeNav}>
+                <TitlesCategory text="Nouveau" exponent="3" />
+              </Link>
+            </li>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="/admin/list" onClick={closeNav}>
+                <TitlesCategory text="Liste" exponent="4" />
+              </Link>
+            </li>
+            <li className="p-4 hover:text-codedragi-blue">
+              <Link to="/admin" onClick={closeNav}>
+                <TitlesCategory text="Déconnexion" exponent="5" />
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
 
       <div onClick={handleNav} className="block md:hidden">
@@ -46,49 +99,64 @@ const Navbar = () => {
             : "ease-in-out duration-300 fixed left-[-100%]"
         }
       >
-        {!(isErrorPage || isUnknownRoute) && (
-          <NavItem to="/" text="Accueil" closeNav={closeNav} active={!isPortfolioPage && !isAdminPage} />
+        <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+          <Link to="/" onClick={closeNav}>
+            <TitlesCategory text="Accueil" exponent="1" />
+          </Link>
+        </li>
+        {!hasPortfolioId && (
+          <>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="#Expertise" onClick={closeNav}>
+                <TitlesCategory text="Expertise" exponent="2" />
+              </Link>
+            </li>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="#Projets" onClick={closeNav}>
+                <TitlesCategory text="Projets" exponent="3" />
+              </Link>
+            </li>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="#Contact" onClick={closeNav}>
+                <TitlesCategory text="Contact" exponent="4" />
+              </Link>
+            </li>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="#Skills" onClick={closeNav}>
+                <TitlesCategory text="Skills" exponent="5" />
+              </Link>
+            </li>
+          </>
         )}
-        {renderNavItems(isPortfolioPage, isAdminPage, closeNav, isErrorPage, isUnknownRoute)}
+        {(location.pathname === "/admin" ||
+          location.pathname === "/admin/new" ||
+          location.pathname === "/admin/list") && (
+          <>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="/admin" onClick={closeNav}>
+                <TitlesCategory text="Dashboard" exponent="2" />
+              </Link>
+            </li>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="/admin/new" onClick={closeNav}>
+                <TitlesCategory text="Nouveau" exponent="3" />
+              </Link>
+            </li>
+            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
+              <Link to="/admin/list" onClick={closeNav}>
+                <TitlesCategory text="Liste" exponent="4" />
+              </Link>
+            </li>
+            <li className="p-4">
+              <Link to="/admin" onClick={closeNav}>
+                <TitlesCategory text="Déconnexion" exponent="5" />
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );
-};
-
-const NavItem = ({ to, text, closeNav, active }) => {
-  return (
-    <li className={`p-4 ${active ? "hover:text-codedragi-blue" : "text-gray-500"}`}>
-      <a href={to} onClick={closeNav}>
-        <TitlesCategory text={text} exponent="1" />
-      </a>
-    </li>
-  );
-};
-
-const renderNavItems = (isPortfolioPage, isAdminPage, closeNav, isErrorPage, isUnknownRoute) => {
-  const navItems = [];
-
-  if (!isPortfolioPage && !isAdminPage && !isErrorPage && !isUnknownRoute) {
-    navItems.push(
-      { to: "#expertise", text: "Expertise", exponent: "2" },
-      { to: "#projets", text: "Projets", exponent: "3" },
-      { to: "#skills", text: "Skills", exponent: "4" },
-      { to: "#contact", text: "Contact", exponent: "5" }
-    );
-  }
-
-  if (isAdminPage) {
-    navItems.push(
-      { to: "/admin", text: "Dashboard", exponent: "2" },
-      { to: "/admin/new", text: "Nouveau", exponent: "3" },
-      { to: "/admin/list", text: "Liste", exponent: "4" },
-      { to: "/admin", text: "Déconnexion", exponent: "5" }
-    );
-  }
-
-  return navItems.map((item, index) => (
-    <NavItem key={index} to={item.to} text={item.text} closeNav={closeNav} active={!isPortfolioPage && !isAdminPage && !isErrorPage && !isUnknownRoute} />
-  ));
 };
 
 export default Navbar;
