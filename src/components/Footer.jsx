@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-black mx-auto py-8  text-white border-t border-codedragi-blue">
+    <div className="bg-gray-900 mx-auto py-8  text-white ">
       <div className="">
         <div>
           <div className="">
@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center py-2">
-        <Link to="/" className="text-red-700 font-medium">
+        <Link to="/login" className="text-red-700 font-medium">
           Administration
         </Link>
         <p className="text-white">Siret n°4354645745</p>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import logoWeb from "../assets/logoWeb.png";
 import { Link, useLocation } from "react-router-dom";
-import { CgMenuGridR } from 'react-icons/cg';
+import { CgMenuGridR } from "react-icons/cg";
 import TitlesCategory from "./TitlesCategory";
 
 const Navbar = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
     setNav(false);
   };
 
-  const hasPortfolioId = location.pathname.includes("/portfolio/");
+  const hasPortfolioId = location.pathname.includes("/portfolio/") || location.pathname === "/login" || location.pathname === "/admin" ;
 
   return (
     <div className="flex justify-between items-center h-15 mx-auto px-4 text-white w-full z-30 fixed bg-black">

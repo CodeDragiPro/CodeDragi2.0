@@ -1,4 +1,4 @@
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 //animation d'opacité
 const opacityAnimation = {

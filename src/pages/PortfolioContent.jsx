@@ -5,7 +5,8 @@ import PageTransition from "../components/PageTransition";
 import VisitButton from "../components/VisitButton";
 import Tag from "../components/Tag";
 import BrandGuideline from "../components/BrandGuideline";
-import { formatDate } from '../utils/utils';
+import { formatDate } from "../utils/utils";
+import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
 
 const PortfolioContent = () => {
   const { projectId } = useParams();
@@ -44,13 +45,14 @@ const PortfolioContent = () => {
             </div>
 
             <div className="flex justify-between md:w-1/2 py-1">
-              <span className="text-codedragi-blue font-bold flex justify-between">Technologie</span>
+              <span className="text-codedragi-blue font-bold flex justify-between">
+                Technologie
+              </span>
               <div>
-              {project.categories.map((category) => (
-                <Tag key={category} text={category} />
-              ))}
+                {project.categories.map((category) => (
+                  <Tag key={category} text={category} />
+                ))}
               </div>
-              
             </div>
 
             <div className="flex justify-between md:w-1/2 py-1">
@@ -68,31 +70,29 @@ const PortfolioContent = () => {
             </div>
           </div>
         </div>
-                <div className="py-8">
+        <div className="py-8">
+          <h1 className="text-2xl font-bold uppercase pb-2">Graphisme</h1>
+          <hr className="my-2" />
 
-                
-        <h1 className="text-2xl font-bold uppercase pb-2">Graphisme</h1>
-        <hr className="my-2" />
+          <div className="lg:flex lg:items-start">
+            <div className="lg:w-1/2 lg:pr-4 mt-2 ">
+              <div className="flex justify-between md:w-1/2">
+                <span className=" text-codedragi-blue font-bold">Police</span>
+                <p>Montserrat</p>
+              </div>
 
-        <div className="lg:flex lg:items-start">
-          <div className="lg:w-1/2 lg:pr-4 mt-2 ">
-            <div className="flex justify-between md:w-1/2">
-              <span className=" text-codedragi-blue font-bold">Police</span>
-              <p>Montserrat</p>
-            </div>
-
-            <div className="flex justify-between md:w-1/2">
-              <span className=" text-codedragi-blue font-bold">
-                Charte Graphique
-              </span>
-              <div className="flex">
-                {project.brand.map((brand) => (
-                  <BrandGuideline key={brand} color={brand} />
-                ))}
+              <div className="flex justify-between md:w-1/2">
+                <span className=" text-codedragi-blue font-bold">
+                  Charte Graphique
+                </span>
+                <div className="flex">
+                  {project.brand.map((brand) => (
+                    <BrandGuideline key={brand} color={brand} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
 
         <div className="py-8">
@@ -100,7 +100,11 @@ const PortfolioContent = () => {
           <hr className="my-2" />
           {project.images.map((poster, index) => (
             <div key={index} bottom duration={1000 * (index + 1)}>
-              <img src={poster} alt={`Poster ${index}`} className="my-4 md:w-3/4 mx-auto" />
+              <img
+                src={poster}
+                alt={`Poster ${index}`}
+                className="my-4 md:w-3/4 mx-auto"
+              />
             </div>
           ))}
           <hr className="my-2" />
@@ -110,22 +114,38 @@ const PortfolioContent = () => {
                 {projectIndex === 0 ? (
                   <span className="text-slate-500">Projet Précèdent</span>
                 ) : (
-                  "Projet Précèdent"
+                  <>
+                    <div className="flex items-center">
+                      <BsArrowLeftSquareFill className="text-codedragi-blue" />
+                      <p className="mx-2">Projet Précèdent</p>
+                    </div>
+                  </>
                 )}
               </Link>
             ) : (
-              <span style={{ color: "gray" }}>Projet Précèdent</span>
+              <div className="flex items-center text-gray-500">
+                <BsArrowLeftSquareFill className="text-gray-500" />
+                <p className="mx-2">Projet Précèdent</p>
+              </div>
             )}
             {nextProject ? (
               <Link to={`/portfolio/${nextProject.id}`}>
                 {projectIndex === portfolioData.length - 1 ? (
                   <span style={{ color: "gray" }}>Projet Suivant</span>
                 ) : (
-                  "Projet Suivant"
+                  <>
+                    <div className="flex items-center">
+                      <p className="mx-2">Projet Suivant</p>
+                      <BsArrowRightSquareFill className="text-codedragi-blue" />
+                    </div>
+                  </>
                 )}
               </Link>
             ) : (
-              <span style={{ color: "gray" }}>Projet Suivant</span>
+              <div className="flex items-center text-gray-500">
+                <p className="mx-2">Projet Suivant</p>
+                <BsArrowRightSquareFill className="text-gray-500" />
+              </div>
             )}
           </div>
         </div>
