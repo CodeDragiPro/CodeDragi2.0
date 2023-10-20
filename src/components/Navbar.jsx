@@ -27,9 +27,9 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center h-15 mx-auto px-4 text-white w-full z-30 fixed bg-black">
       <div className="flex items-center">
-        <Link to="/" onClick={closeNav}>
+        <a href="/" onClick={closeNav}>
           <img src={logoWeb} alt="Logo" className="h-12 mt-6 animate-bounce" />
-        </Link>
+        </a>
       </div>
       <ul className="hidden md:flex">
         <li className="p-4 hover:text-codedragi-blue">
@@ -40,24 +40,24 @@ const Navbar = () => {
         {!hasPortfolioId && (
           <>
             <li className="p-4 hover:text-codedragi-blue">
-              <Link to="#Expertise" onClick={closeNav}>
+              <a href="#expertise" onClick={closeNav}>
                 <TitlesCategory text="Expertise" exponent="2" />
-              </Link>
+              </a>
             </li>
             <li className="p-4 hover:text-codedragi-blue">
-              <Link to="#Projets" onClick={closeNav}>
+              <a href="#projets" onClick={closeNav}>
                 <TitlesCategory text="Projets" exponent="3" />
-              </Link>
+              </a>
             </li>
             <li className="p-4 hover:text-codedragi-blue">
-              <Link to="#Contact" onClick={closeNav}>
+              <a href="#contact" onClick={closeNav}>
                 <TitlesCategory text="Contact" exponent="4" />
-              </Link>
+              </a>
             </li>
             <li className="p-4 hover:text-codedragi-blue">
-              <Link to="#Skills" onClick={closeNav}>
+              <a href="#skills" onClick={closeNav}>
                 <TitlesCategory text="Skills" exponent="5" />
-              </Link>
+              </a>
             </li>
           </>
         )}
@@ -107,24 +107,24 @@ const Navbar = () => {
         {!hasPortfolioId && (
           <>
             <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="#Expertise" onClick={closeNav}>
+              <a href="#expertise" onClick={closeNav}>
                 <TitlesCategory text="Expertise" exponent="2" />
-              </Link>
+              </a>
             </li>
             <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="#Projets" onClick={closeNav}>
+              <a href="#projets" onClick={closeNav}>
                 <TitlesCategory text="Projets" exponent="3" />
-              </Link>
+              </a>
             </li>
             <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="#Contact" onClick={closeNav}>
+              <a href="#contact" onClick={closeNav}>
                 <TitlesCategory text="Contact" exponent="4" />
-              </Link>
+              </a>
             </li>
             <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="#Skills" onClick={closeNav}>
+              <a href="#skills" onClick={closeNav}>
                 <TitlesCategory text="Skills" exponent="5" />
-              </Link>
+              </a>
             </li>
           </>
         )}

@@ -20,10 +20,16 @@ const skills = [
 
 const Experience = () => {
   return (
-    <div className="py-8" id="skills">
-      <div className='text-center py-8 text-4xl'>
+    <div className="py-8 text-white text-justify p-4" id="skills">
+      <div className=' py-8 text-4xl text-center'>
         <TitlesCategory text="Skills" exponent="5"/>
       </div>
+      <p className="font-bold md:w-1/2 w-full mx-auto">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab
+            nesciunt pariatur incidunt dolor placeat dignissimos vero
+            praesentium qui magni aperiam quam, provident quas assumenda. Quas
+            ducimus amet impedit debitis!
+          </p>
       <div className="flex flex-wrap justify-center items-center">
         {skills.map((skill, index) => (
           <IconSkills key={index} icon={skill.icon} text={skill.text} />
