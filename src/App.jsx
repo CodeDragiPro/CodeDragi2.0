@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import AdminLogin from "./admin/AdminLogin";
 import AdminDashboard from "./admin/AdminDashboard";
 import ErrorPage from "./pages/ErrorPage";
+import AdminNew from "./admin/AdminNew";
+import AdminList from "./admin/AdminList";
 
 function App() {
   const location = useLocation();
@@ -25,6 +27,8 @@ function App() {
           {/* PROTECTED ROUTES */}
           <Route path="/login" element={<AdminLogin/>} />
           <Route path="/admin" element={<AdminDashboard/> }/>
+          <Route path="/admin/new" element={<AdminNew/>} />
+          <Route path="/admin/list" element={<AdminList/>} />
         </Routes>
       </AnimatePresence>
       <Footer />

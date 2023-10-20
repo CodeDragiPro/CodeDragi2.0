@@ -3,7 +3,7 @@ import TitlesCategory from "./TitlesCategory";
 
 const Contact = () => {
   return (
-    <div className=" text-white py-8 md:flex p-4">
+    <div className=" text-white py-8 md:flex p-4" id="contact">
       <div className="w-full md:w-1/2 md:pr-4 mb-4 md:mb-0">
         <div className="py-8 text-4xl md:text-left text-center">
           <TitlesCategory text="Contact" exponent="4" />

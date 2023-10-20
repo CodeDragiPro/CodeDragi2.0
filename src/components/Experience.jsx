@@ -20,7 +20,7 @@ const skills = [
 
 const Experience = () => {
   return (
-    <div className="py-8" id="section-skills">
+    <div className="py-8" id="skills">
       <div className='text-center py-8 text-4xl'>
         <TitlesCategory text="Skills" exponent="5"/>
       </div>

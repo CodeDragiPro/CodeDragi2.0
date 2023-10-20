@@ -3,7 +3,8 @@ import TitlesCategory from "./TitlesCategory";
 
 const Expertise = () => {
   return (
-    <div className="text-white h-screen flex flex-col justify-center">
+    
+    <div className="text-white h-screen flex flex-col justify-center" id="expertise">
         <div className='py-8 text-center text-4xl'>
         <TitlesCategory text="Expertise" exponent="2"/>
       </div>
