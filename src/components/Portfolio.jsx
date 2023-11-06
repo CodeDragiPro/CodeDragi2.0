@@ -1,21 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PortfolioCard from "./PortfolioCard";
-import data from "../data/data.json";
+import { collection, getDocs } from "firebase/firestore/lite";
+import { db } from "../firebase";
 import { Link } from "react-router-dom";
 import TitlesCategory from "./TitlesCategory";
 
 const itemsPerPage = 10;
 
 const Portfolio = () => {
+  const [portfolios, setPortfolios] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedType, setSelectedType] = useState("Tous");
-  const [hoveredIndex, setHoveredIndex] = useState(-1); // État pour gérer le survol
+  const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [hoveredImage, setHoveredImage] = useState("");
+  const [types, setTypes] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "portfolio"));
+        const portfolioData = [];
+        querySnapshot.forEach((doc) => {
+          const portfolio = {
+            id: doc.id,
+            ...doc.data(),
+          };
+          portfolioData.push(portfolio);
+        });
+        setPortfolios(portfolioData);
+
+        const allTypes = Array.from(
+          new Set(portfolioData.flatMap((item) => item.selectedTypes))
+        );
+        setTypes(allTypes);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des données de Firebase:",
+          error
+        );
+      }
+    };
+    fetchData();
+  }, []);
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const filteredData =
     selectedType === "Tous"
-      ? data
-      : data.filter((item) => item.type === selectedType);
+      ? portfolios
+      : portfolios.filter((item) => item.selectedTypes.includes(selectedType));
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => {
@@ -29,26 +62,36 @@ const Portfolio = () => {
 
   const handlePortfolioHover = (index) => {
     setHoveredIndex(index);
+    if (index !== -1) {
+      setHoveredImage(currentItems[index].images[0]);
+    } else {
+      setHoveredImage("");
+    }
   };
 
   return (
     <div id="projets">
-      <div className="text-white w-full h-full flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2 flex items-center p-4">
-          <img
-            src={
-              hoveredIndex !== -1
-                ? currentItems[hoveredIndex].images[0]
-                : currentItems[0].images[0]
-            }
-            alt="Portfolio Image"
-            className="w-full rounded-lg pl-0 aspect-ratio-4/3"
-          />
-        </div>
-        <div className="w-full text-left p-4 md:w-1/2">
-          <div className="py-8 text-4xl md:text-left text-center">
+       <div className="py-8 text-4xl md:text-left text-center p-4">
             <TitlesCategory text="Projets" exponent="3" />
           </div>
+      <div className="text-white w-full h-full flex flex-col md:flex-row">
+        
+        <div className="w-full md:w-1/2 flex items-center p-4">
+          {currentItems.length > 0 && (
+            <img
+              src={
+                hoveredIndex !== -1
+                  ? hoveredImage || "chemin/par/défaut.jpg"
+                  : currentItems[0].images[0] || "chemin/par/défaut.jpg"
+              }
+              alt="Portfolio Image"
+              className="w-full rounded-lg pl-0 aspect-ratio-4/3"
+            />
+          )}
+        </div>
+
+        <div className="w-full text-left p-4 md:w-1/2">
+         
           <p className="font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab
             nesciunt pariatur incidunt dolor placeat dignissimos vero
@@ -58,29 +101,23 @@ const Portfolio = () => {
           <div className="w-full  flex items-center text-white mt-10">
             <button
               className={`cursor-pointer ${
-                selectedType === "Tous" && "text-codedragi-blue"
+                selectedType === "Tous" && "font-bold text-codedragi-blue mx-1"
               }`}
               onClick={() => handleTypeFilter("Tous")}
             >
-              Tous <span className="text-codedragi-blue pl-2"> / </span>
+              Tous
             </button>
-            <button
-              className={`cursor-pointer mx-1 ${
-                selectedType === "Dévelopement Web" && "text-codedragi-blue"
-              }`}
-              onClick={() => handleTypeFilter("Dévelopement Web")}
-            >
-              Dévelopement Web
-              <span className="text-codedragi-blue pl-2"> / </span>
-            </button>
-            <button
-              className={`cursor-pointer mx-1 pl-2 ${
-                selectedType === "Design" && "text-codedragi-blue"
-              }`}
-              onClick={() => handleTypeFilter("Design")}
-            >
-              Design
-            </button>
+            {types.map((type) => (
+              <button
+                key={type}
+                className={`cursor-pointer mx-1 font-bold ${
+                  selectedType === type && "text-codedragi-blue"
+                }`}
+                onClick={() => handleTypeFilter(type)}
+              >
+                {type}
+              </button>
+            ))}
           </div>
           <div className="pt-2">
             {currentItems.map((item, index) => (
@@ -89,14 +126,20 @@ const Portfolio = () => {
                 onMouseEnter={() => handlePortfolioHover(index)}
                 onMouseLeave={() => handlePortfolioHover(-1)}
               >
-                <Link to={`/portfolio/${item.id}`}>
-                  <PortfolioCard
-                    id={item.id}
-                    image={item.images[0]}
-                    title={item.title}
-                    type={item.type}
-                  />
-                </Link>
+                {item && (
+                  <Link to={`/portfolio/${item.id}`}>
+                    <PortfolioCard
+                      id={item.id}
+                      image={
+                        item.images && item.images.length > 0
+                          ? item.images[0]
+                          : "chemin/par/défaut.jpg"
+                      }
+                      title={item.title}
+                      type={item.selectedTypes}
+                    />
+                  </Link>
+                )}
               </div>
             ))}
           </div>

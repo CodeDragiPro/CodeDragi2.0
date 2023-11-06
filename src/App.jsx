@@ -22,7 +22,7 @@ function App() {
       <AnimatePresence initial={false} mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/portfolio/:projectId" element={<PortfolioContent />} />
+          <Route path="/portfolio/:id" element={<PortfolioContent />} />
           <Route path="*" element={<ErrorPage/>} />
           {/* PROTECTED ROUTES */}
           <Route path="/login" element={<AdminLogin/>} />
