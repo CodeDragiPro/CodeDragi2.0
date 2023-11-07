@@ -6,7 +6,7 @@ import Contact from '../components/Contact';
 import Experience from '../components/Experience';
 import PageTransition from '../components/PageTransition';
 
-const Home = () => {
+const HomePage = () => {
   return (
    <PageTransition>
       <Hero />
@@ -18,4 +18,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

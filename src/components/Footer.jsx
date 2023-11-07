@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="">
         <div>
           <div className="">
-            <img src={Logo} className="h-12  animate-bounce mx-auto"/>
+            <img src={Logo} className="h-12  animate-bounce mx-auto" />
           </div>
           <div className="flex justify-between w-[50%] my-2 mx-auto">
             <FaFacebookSquare size={30} />
@@ -24,12 +24,12 @@ const Footer = () => {
             <FaGithubSquare size={30} />
             <FaDribbbleSquare size={30} />
           </div>
+          <div className="text-center">
+            <Link to="/login">Administration</Link>
+          </div>
         </div>
       </div>
       <div className="text-center py-2">
-        <Link to="/login" className="text-red-700 font-medium">
-          Administration
-        </Link>
         <p className="text-white">Siret n°4354645745</p>
         <p>© CodeDragi - 2023</p>
       </div>

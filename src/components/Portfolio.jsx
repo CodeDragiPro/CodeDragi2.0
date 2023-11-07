@@ -93,10 +93,7 @@ const Portfolio = () => {
         <div className="w-full text-left p-4 md:w-1/2">
          
           <p className="font-bold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab
-            nesciunt pariatur incidunt dolor placeat dignissimos vero
-            praesentium qui magni aperiam quam, provident quas assumenda. Quas
-            ducimus amet impedit debitis!
+          Découvrez une collection diversifiée de mes projets créatifs, allant de la conception web à la maquette, démontrant mon engagement envers l'excellence et l'innovation.
           </p>
           <div className="w-full  flex items-center text-white mt-10">
             <button

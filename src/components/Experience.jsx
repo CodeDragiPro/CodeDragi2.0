@@ -25,10 +25,7 @@ const Experience = () => {
         <TitlesCategory text="Skills" exponent="5"/>
       </div>
       <p className="font-bold md:w-1/2 w-full mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab
-            nesciunt pariatur incidunt dolor placeat dignissimos vero
-            praesentium qui magni aperiam quam, provident quas assumenda. Quas
-            ducimus amet impedit debitis!
+      Explorez une mosaïque de technologies modernes avec lesquelles je jongle pour créer des solutions numériques innovantes.
           </p>
       <div className="flex flex-wrap justify-center items-center">
         {skills.map((skill, index) => (

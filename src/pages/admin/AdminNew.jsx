@@ -15,7 +15,7 @@ const AdminNew = () => {
   const descriptionRef = useRef();
   const linkRef = useRef();
   const imageRef = useRef();
-  // const resumeRef = useRef();
+
   
   const types = ["Développement web", "Web Design", "Graphisme"];
   const typeRefs = types.map(() => useRef());
@@ -37,7 +37,7 @@ const AdminNew = () => {
     e.preventDefault();
     toast.info("Envoi des données en cours", {
       position: toast.POSITION.TOP_CENTER,
-      autoClose: 2000, // Optionnel : ferme le toast après 2 secondes
+      autoClose: 2000, 
     });
     const title = titleRef.current.value;
     const client = clientRef.current.value;
@@ -47,7 +47,7 @@ const AdminNew = () => {
     const link = linkRef.current.value;
     const images = imageRef.current.files;
     const date = selectedDate;
-    // const resume = resumeRef.current.value;
+
 
     const selectedCategories = categoryRefs
       .map((ref, index) => ({
@@ -96,7 +96,7 @@ const AdminNew = () => {
         });
         toast.success("Données envoyées avec succès", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000, // Optionnel : ferme le toast après 2 secondes
+          autoClose: 5000, 
         });
        
       
@@ -235,16 +235,6 @@ const AdminNew = () => {
             className="w-full p-2 rounded mx-2 focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
           />
         </div>
-        {/* <div>
-          <label htmlFor="resume" className="text-lg font-bold text-codedragi-blue">
-            Résumé :
-          </label>
-          <textarea
-            id="resume"
-            className="w-full p-2 border border-codedragi-blue rounded focus:outline-none"
-            ref={resumeRef}
-          />
-        </div> */}
         <div>
           <label className="text-lg font-bold text-codedragi-blue">Catégories :</label>
           {categories.map((category, index) => (

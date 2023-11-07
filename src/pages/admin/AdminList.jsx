@@ -3,10 +3,10 @@ import { collection, getDocs, query, doc, deleteDoc } from "firebase/firestore/l
 import { db } from "../../firebase";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import PortfolioEditModal from '../../components/PortfolioEditModale';
-import { confirmAlert } from 'react-confirm-alert'; // Assurez-vous d'installer la bibliothèque react-confirm-alert
+import { confirmAlert } from 'react-confirm-alert'; 
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Assurez-vous d'importer le CSS pour react-confirm-alert
-import 'react-toastify/dist/ReactToastify.css'; // Assurez-vous d'importer le CSS pour react-toastify
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const AdminList = () => {
   const [data, setData] = useState([]);
@@ -66,7 +66,6 @@ const AdminList = () => {
   };
 
   const updatePortfolio = (updatedPortfolio) => {
-    // Mettez à jour le portfolio dans la liste
     setData((prevData) =>
       prevData.map((portfolio) =>
         portfolio.id === updatedPortfolio.id ? updatedPortfolio : portfolio
@@ -74,11 +73,9 @@ const AdminList = () => {
     );
     setSelectedPortfolio(null);
   
-    // Affichez un toast de confirmation de modification
     toast.success("Portfolio modifié avec succès", {
-      className: "bg-gray-900 border-2 border-codedragi-blue text-white",
       position: toast.POSITION.TOP_CENTER,
-      autoClose: 2000, // Optionnel : ferme le toast après 2 secondes
+      autoClose: 2000, 
     });
   };
 

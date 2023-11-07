@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import PortfolioContent from "./pages/PortfolioContent";
@@ -14,6 +14,7 @@ import AdminList from "./pages/admin/AdminList";
 
 function App() {
   const location = useLocation();
+  const isAuthenticated = localStorage.getItem("authenticated") === "true";
 
   return (
     <div>
@@ -23,12 +24,12 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
           <Route path="/portfolio/:id" element={<PortfolioContent />} />
-          <Route path="*" element={<ErrorPage/>} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/login" element={<AdminLogin />} />
           {/* PROTECTED ROUTES */}
-          <Route path="/login" element={<AdminLogin/>} />
-          <Route path="/admin" element={<AdminDashboard/> }/>
-          <Route path="/admin/new" element={<AdminNew/>} />
-          <Route path="/admin/list" element={<AdminList/>} />
+          <Route path="/admin" element={isAuthenticated ? <AdminDashboard /> : <Navigate to="/login" />}/>
+          <Route path="/admin/new" element={isAuthenticated ? <AdminNew /> : <Navigate to="/login" />}/>
+          <Route path="/admin/list" element={isAuthenticated ? <AdminList /> : <Navigate to="/login" />}/>
         </Routes>
       </AnimatePresence>
       <Footer />

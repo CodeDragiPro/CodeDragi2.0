@@ -12,14 +12,16 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
   const handleSignIn = (e) => {
-    e.preventDefault(); // Empêcher le rechargement de la page
-
+    e.preventDefault(); 
+  
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("Authentification réussie!");
+  
+        localStorage.setItem("authenticated", "true");
+  
         toast.success('Authentification réussie !', { position: toast.POSITION.BOTTOM_RIGHT });
         setTimeout(() => {
           navigate('/admin');
@@ -30,6 +32,7 @@ const AdminLogin = () => {
         toast.error(`Erreur d'authentification : ${error.message}`, { position: toast.POSITION.BOTTOM_RIGHT });
       });
   };
+  
 
   return (
     <PageTransition>
@@ -53,7 +56,7 @@ const AdminLogin = () => {
             className="w-full rounded p-2 mb-4 focus:outline-none text-codedragi-blue bg-gray-900 border-codedragi-blue border-2"
           />
           <button
-            type="submit" // Le bouton devient un bouton de soumission
+            type="submit" 
             className="w-full bg-codedragi-blue text-white rounded p-2 hover-bg-blue-600"
           >
             Se connecter
