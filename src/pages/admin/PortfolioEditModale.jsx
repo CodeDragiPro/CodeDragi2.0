@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { updateDoc, doc } from "firebase/firestore/lite";
-import { db } from "../firebase";
+import { db } from "../../Config/firebase";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 

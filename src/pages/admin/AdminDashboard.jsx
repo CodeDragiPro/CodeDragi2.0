@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore/lite';
-import { db } from '../../firebase';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { db } from '../../Config/firebase';
+import { useNavigate, Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
@@ -37,7 +36,7 @@ const AdminDashboard = () => {
     const auth = getAuth();
     try {
       await signOut(auth);
-      localStorage.removeItem("authenticated");
+      l
       navigate('/login'); 
     } catch (error) {
       console.error('Erreur lors de la déconnexion :', error);

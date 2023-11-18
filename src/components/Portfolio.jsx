@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import PortfolioCard from "./PortfolioCard";
 import { collection, getDocs } from "firebase/firestore/lite";
-import { db } from "../firebase";
+import { db } from "../Config/firebase";
 import { Link } from "react-router-dom";
-import TitlesCategory from "./TitlesCategory";
+
+import PortfolioCard from "./ui/PortfolioCard";
+import TitlesCategory from "./ui/TitlesCategory";
 
 const itemsPerPage = 10;
 
@@ -70,8 +71,8 @@ const Portfolio = () => {
   };
 
   return (
-    <div id="projets">
-       <div className="py-8 text-4xl md:text-left text-center p-4">
+    <div id="projets" className="">
+       <div className="py-8 text-4xl text-center p-4">
             <TitlesCategory text="Projets" exponent="3" />
           </div>
       <div className="text-white w-full h-full flex flex-col md:flex-row">
@@ -123,7 +124,7 @@ const Portfolio = () => {
                 onMouseEnter={() => handlePortfolioHover(index)}
                 onMouseLeave={() => handlePortfolioHover(-1)}
               >
-                {item && (
+                {item  && (
                   <Link to={`/portfolio/${item.id}`}>
                     <PortfolioCard
                       id={item.id}
@@ -133,7 +134,7 @@ const Portfolio = () => {
                           : "chemin/par/défaut.jpg"
                       }
                       title={item.title}
-                      type={item.selectedTypes}
+                      type={item.selectedTypes && item.selectedTypes.join(', ')}
                     />
                   </Link>
                 )}

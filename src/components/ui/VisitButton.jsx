@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { BsArrowRightSquareFill } from 'react-icons/bs';
 
 const VisitButton = ({ to }) => {

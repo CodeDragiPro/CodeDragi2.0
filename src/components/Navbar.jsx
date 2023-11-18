@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import logoWeb from "../assets/logoWeb.png";
 import { Link, useLocation } from "react-router-dom";
-import { CgMenuGridR } from "react-icons/cg";
-import TitlesCategory from "./TitlesCategory";
+
+import { useAuth } from "../Config/AuthContext";
+
+import logoWeb from "../assets/logoWeb.png";
+
+import { FaUserSecret, FaCode, FaTimes, FaSignOutAlt } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, signOut } = useAuth();
 
-  const handleNav = () => {
-    setNav(!nav);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const closeNav = () => {
-    setNav(false);
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   const hasPortfolioId =
@@ -25,137 +29,130 @@ const Navbar = () => {
     location.pathname === "/admin/list";
 
   return (
-    <div className="flex justify-between items-center h-15 mx-auto px-4 text-white w-full z-30 fixed bg-black">
-      <div className="flex items-center">
-        <a href="/" onClick={closeNav}>
-          <img src={logoWeb} alt="Logo" className="h-12 mt-6 animate-bounce" />
-        </a>
-      </div>
-      <ul className="hidden md:flex">
-        <li className="p-4 hover:text-codedragi-blue">
-          <Link to="/" onClick={closeNav}>
-            <TitlesCategory text="Accueil" exponent="1" />
-          </Link>
-        </li>
-        {!hasPortfolioId && (
-          <>
-            <li className="p-4 hover:text-codedragi-blue">
-              <a href="#expertise" onClick={closeNav}>
-                <TitlesCategory text="Expertise" exponent="2" />
-              </a>
-            </li>
-            <li className="p-4 hover:text-codedragi-blue">
-              <a href="#projets" onClick={closeNav}>
-                <TitlesCategory text="Projets" exponent="3" />
-              </a>
-            </li>
-            <li className="p-4 hover:text-codedragi-blue">
-              <a href="#contact" onClick={closeNav}>
-                <TitlesCategory text="Contact" exponent="4" />
-              </a>
-            </li>
-            <li className="p-4 hover:text-codedragi-blue">
-              <a href="#skills" onClick={closeNav}>
-                <TitlesCategory text="Skills" exponent="5" />
-              </a>
-            </li>
-          </>
-        )}
-        {(location.pathname === "/admin" ||
-          location.pathname === "/admin/new" ||
-          location.pathname === "/admin/list") && (
-          <>
-            <li className="p-4 hover:text-codedragi-blue">
-              <Link to="/admin" onClick={closeNav}>
-                <TitlesCategory text="Dashboard" exponent="2" />
-              </Link>
-            </li>
-            <li className="p-4 hover:text-codedragi-blue">
-              <Link to="/admin/new" onClick={closeNav}>
-                <TitlesCategory text="Nouveau" exponent="3" />
-              </Link>
-            </li>
-            <li className="p-4 hover:text-codedragi-blue">
-              <Link to="/admin/list" onClick={closeNav}>
-                <TitlesCategory text="Liste" exponent="4" />
-              </Link>
-            </li>
-            <li className="p-4 hover:text-codedragi-blue">
-              <Link to="/admin" onClick={closeNav}>
-                <TitlesCategory text="Déconnexion" exponent="5" />
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
+    <nav className="p-2 flex justify-between items-center fixed w-full z-50 text-white bg-black">
+      <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
+        <img src={logoWeb} className="w-40" alt="Logo" />
+      </Link>
 
-      <div onClick={handleNav} className="block md:hidden">
-        {nav ? <AiOutlineClose size={25} /> : <CgMenuGridR size={25} />}
-      </div>
-      <ul
-        className={
-          nav
-            ? "z-10 fixed uppercase left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"
-            : "ease-in-out duration-300 fixed left-[-100%]"
-        }
-      >
-        <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-          <Link to="/" onClick={closeNav}>
-            <TitlesCategory text="Accueil" exponent="1" />
-          </Link>
-        </li>
+      <div className="hidden md:flex space-x-4">
+        <Link to="/" onClick={closeMobileMenu}>
+          Accueil
+        </Link>
         {!hasPortfolioId && (
           <>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <a href="#expertise" onClick={closeNav}>
-                <TitlesCategory text="Expertise" exponent="2" />
-              </a>
-            </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <a href="#projets" onClick={closeNav}>
-                <TitlesCategory text="Projets" exponent="3" />
-              </a>
-            </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <a href="#contact" onClick={closeNav}>
-                <TitlesCategory text="Contact" exponent="4" />
-              </a>
-            </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <a href="#skills" onClick={closeNav}>
-                <TitlesCategory text="Skills" exponent="5" />
-              </a>
-            </li>
+            <a href="#expertise" onClick={closeMobileMenu}>
+              Expertise
+            </a>
+            <a href="#projets" onClick={closeMobileMenu}>
+              Projets
+            </a>
+            <a href="#contact" onClick={closeMobileMenu}>
+              Contact
+            </a>
+            <a href="#skills" onClick={closeMobileMenu}>
+              Skills
+            </a>
           </>
         )}
         {(location.pathname === "/admin" ||
           location.pathname === "/admin/new" ||
           location.pathname === "/admin/list") && (
           <>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="/admin" onClick={closeNav}>
-                <TitlesCategory text="Dashboard" exponent="2" />
-              </Link>
-            </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="/admin/new" onClick={closeNav}>
-                <TitlesCategory text="Nouveau" exponent="3" />
-              </Link>
-            </li>
-            <li className="p-4 border-b border-gray-600 hover:text-codedragi-blue">
-              <Link to="/admin/list" onClick={closeNav}>
-                <TitlesCategory text="Liste" exponent="4" />
-              </Link>
-            </li>
-            <li className="p-4">
-              <Link to="/admin" onClick={closeNav}>
-                <TitlesCategory text="Déconnexion" exponent="5" />
-              </Link>
-            </li>
+            <Link to="/admin" onClick={closeMobileMenu}>
+              Dashboard
+            </Link>
+            <Link to="/admin/new" onClick={closeMobileMenu}>
+              Nouveau
+            </Link>
+            <Link to="/admin/list" onClick={closeMobileMenu}>
+              Liste
+            </Link>
           </>
         )}
-      </ul>
+      </div>
+
+      <div className="hidden md:flex text-white space-x-2">
+        {isAuthenticated ? (
+          <>
+            <FaSignOutAlt size={24} onClick={signOut} />
+
+            <Link to="/admin">
+              <IoMdSettings size={24} />
+            </Link>
+          </>
+        ) : (
+          <Link to="/login">
+            <FaUserSecret size={24} />
+          </Link>
+        )}
+      </div>
+
+      <div className="md:hidden text-white" onClick={toggleMobileMenu}>
+        <FaCode size={24} />
+      </div>
+
+      {isMobileMenuOpen && (
+  <div className="md:hidden fixed inset-0 bg-gray-900 flex flex-col items-center justify-center z-50">
+    <div className="absolute top-0 right-0 mt-6 mr-4">
+      <button onClick={toggleMobileMenu} className="focus:outline-none">
+        <FaTimes size={24} />
+      </button>
     </div>
+
+    <div className="text-center space-y-4 flex flex-col items-center">
+      <Link to="/" className="block" onClick={closeMobileMenu}>
+        Accueil
+      </Link>
+      {!hasPortfolioId && (
+        <>
+          <a href="#expertise" onClick={closeMobileMenu}>
+            Expertise
+          </a>
+          <a href="#projets" onClick={closeMobileMenu}>
+            Projets
+          </a>
+          <a href="#contact" onClick={closeMobileMenu}>
+            Contact
+          </a>
+          <a href="#skills" onClick={closeMobileMenu}>
+            Skills
+          </a>
+        </>
+      )}
+      {(location.pathname === "/admin" ||
+        location.pathname === "/admin/new" ||
+        location.pathname === "/admin/list") && (
+        <>
+          <Link to="/admin" onClick={closeMobileMenu}>
+            Dashboard
+          </Link>
+          <Link to="/admin/new" onClick={closeMobileMenu}>
+            Nouveau
+          </Link>
+          <Link to="/admin/list" onClick={closeMobileMenu}>
+            Liste
+          </Link>
+        </>
+      )}
+    </div>
+
+    <div className="fixed bottom-0 mb-12 flex items-center justify-center space-x-2">
+      {isAuthenticated ? (
+        <>
+          <FaSignOutAlt size={24} onClick={() => { signOut(); closeMobileMenu(); }} />
+          <Link to="/admin" onClick={closeMobileMenu}>
+            <IoMdSettings size={24} />
+          </Link>
+        </>
+      ) : (
+        <Link to="/login" onClick={closeMobileMenu}>
+          <FaUserSecret size={24} />
+        </Link>
+      )}
+    </div>
+  </div>
+)}
+    </nav>
   );
 };
 

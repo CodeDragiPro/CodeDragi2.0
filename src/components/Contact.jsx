@@ -1,14 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import TitlesCategory from "./TitlesCategory";
 import emailjs from '@emailjs/browser';
+
+import TitlesCategory from "./ui/TitlesCategory";
+import avatar from '../assets/avatar.jpg';
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 const Contact = () => {
   const serviceID = import.meta.env.VITE_EMAIL_SERVICE_ID;
   const templateID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
   const userID = import.meta.env.VITE_EMAIL_USER_ID;
-
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -26,43 +29,42 @@ const Contact = () => {
     );
   };
   
-
   useEffect(() => {
     emailjs.init(userID);
   }, []);
 
   return (
-    <div className="text-white py-8 md:flex p-4" id="contact">
-      <div className="w-full md:w-1/2 md:pr-4 mb-4 md:mb-0">
-        <div className="py-8 text-4xl md:text-left text-center">
-          <TitlesCategory text="Contact" exponent="4" />
+    <div className="text-white py-8 md:flex p-4 flex-col items-center justify-center text-center" id="contact">
+      <div></div>
+      <div className="w-full  mb-4 ">
+        <div className="py-8 text-4xl">
+          <TitlesCategory text="Contact" exponent="5" />
         </div>
         <p className="font-bold">
-        Prêt à discuter de votre prochain projet ? Contactez-moi pour échanger des idées et faire de votre vision une réalité numérique.
+          Prêt à discuter de votre prochain projet ? Contactez-moi pour échanger des idées et faire de votre vision une réalité numérique.
         </p>
         <div>
           <h2 className="text-xl font-bold py-4">Mes informations personnelles :</h2>
-          <div className="border-2 rounded border-codedragi-blue mt-2">
-            <input
-              type="text"
-              className="w-full bg-black p-2 text-codedragi-blue rounded mb-2 outline-none"
-              value="codedragipro@gmail.com"
-              readOnly
-            />
-            <input
-              type="text"
-              className="w-full bg-black p-2 text-codedragi-blue rounded mb-2 outline-none"
-              value="0762266195"
-              readOnly
-            />
+          <div className="bg-gray-900 p-4 rounded-lg text-center">
+
+          <img
+            src={avatar}
+            alt="Avatar"
+            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white"
+          />
+          <div className="text-xl">
+          <p className="">codedragipro@gmail.com</p>
+          <p className="mb-4">07.62.26.61.95</p>
           </div>
+       
+       </div>
         </div>
       </div>
-      <div className="w-full md:w-1/2 md:pl-4">
+      <div className="w-full ">
         <div>
           <form ref={form} id="contact-form" onSubmit={sendEmail}>
             <div className="mb-4">
-              <label htmlFor="user_name" className="block text-codedragi-blue font-bold mb-2">
+              <label htmlFor="user_name" className="block text-codedragi-blue font-bold mb-2 text-left">
                 Nom:
               </label>
               <input
@@ -74,7 +76,7 @@ const Contact = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-codedragi-blue font-bold mb-2">
+              <label htmlFor="email" className="block text-codedragi-blue font-bold mb-2 text-left">
                 Email:
               </label>
               <input
@@ -86,7 +88,7 @@ const Contact = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="message" className="block text-codedragi-blue font-bold mb-2">
+              <label htmlFor="message" className="block text-codedragi-blue font-bold mb-2 text-left">
                 Message:
               </label>
               <textarea

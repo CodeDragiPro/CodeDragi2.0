@@ -7,11 +7,14 @@ import {
   query,
   getDocs,
 } from "firebase/firestore/lite";
-import { db } from "../firebase";
-import Tag from "../components/Tag";
-import VisitButton from "../components/VisitButton";
-import BrandGuideline from "../components/BrandGuideline";
-import PageTransition from '../components/PageTransition';
+import { db } from "../Config/firebase";
+import { Helmet } from "react-helmet";
+
+import Tag from "../components/ui/Tag";
+import VisitButton from "../components/ui/VisitButton";
+import BrandGuideline from "../components/ui/BrandGuideline";
+import PageTransition from '../components/Design/PageTransition';
+
 
 const PortfolioContent = () => {
   const { id } = useParams(); 
@@ -67,7 +70,15 @@ const PortfolioContent = () => {
 
   return (
     <PageTransition>
-    <div className="py-20  text-white p-4 ">
+       <Helmet>
+    <meta charset="UTF-8"/>
+    <title>Portfolio</title>
+    <meta name="description" content="Portfolio de CodeDragi" />
+    <meta name="keywords" content="développeur, designer, codedragi, CodeDragi, React, front-end,firebase,React Js,web developper,developper, portfolio,portfolio developpeur, portfolio developper"/>
+    <meta name="author" content="CodeDragi"/>
+    <meta name="robots" content="index, follow"/>
+      </Helmet>
+    <div className="py-20 md:mx-20  text-white p-4 ">
       {portfolio ? (
         <div>
           <p className="text-4xl font-bold uppercase">{portfolio.title}</p>

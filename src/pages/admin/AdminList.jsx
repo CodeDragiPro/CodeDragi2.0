@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, doc, deleteDoc } from "firebase/firestore/lite";
-import { db } from "../../firebase";
-import { FaTrash, FaEdit } from "react-icons/fa";
-import PortfolioEditModal from '../../components/PortfolioEditModale';
+import { db } from "../../Config/firebase";
+
 import { confirmAlert } from 'react-confirm-alert'; 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
+
+import PortfolioEditModal from '../admin/PortfolioEditModale';
+ import { FaTrash, FaEdit } from "react-icons/fa";
 
 const AdminList = () => {
   const [data, setData] = useState([]);

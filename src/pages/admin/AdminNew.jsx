@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { db, storage } from "../../firebase";
+import { db, storage } from "../../Config/firebase";
 import { addDoc, collection } from "firebase/firestore/lite";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -90,13 +90,8 @@ const AdminNew = () => {
           link,
           images: imageUrls,
           date,
-          // resume,
           selectedCategories,
           selectedTypes,
-        });
-        toast.success("Données envoyées avec succès", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000, 
         });
        
       
@@ -117,20 +112,26 @@ const AdminNew = () => {
           selectedCategories,
           selectedTypes,
         });
-        toast.error("Une erreur s'est produite lors de l'envoi", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 2000, 
-        });
+       
       });
   };
 
   const savePortfolio = async (portfolio) => {
-    console.log(portfolio);
     try {
       await addDoc(collection(db, "portfolio"), portfolio);
-      window.location.reload(false);
+      setTimeout(() => {
+        navigate('/admin/list');
+      }, 500); 
+      toast.success("Données envoyées avec succès", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      });
     } catch (error) {
-      alert("Failed to add portfolio");
+      console.error("Failed to add portfolio", error);
+      toast.error("Une erreur s'est produite lors de l'envoi", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2000,
+      });
     }
   };
 
