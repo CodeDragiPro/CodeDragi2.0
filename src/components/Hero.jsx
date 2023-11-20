@@ -1,11 +1,31 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import BackgroundVideo from '../assets/backgroundVideo.mp4';
-
 import { AiFillPhone } from 'react-icons/ai'; 
 import { FaArrowDown } from 'react-icons/fa';
 
 const Hero = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const video = document.getElementById('background-video');
+
+    // Pause la vidéo lors de la navigation
+    const handleNavigation = () => {
+      if (video) {
+        video.pause();
+      }
+    };
+
+    // Écoute l'événement de navigation
+    window.addEventListener('beforeunload', handleNavigation);
+
+    // Nettoie l'écouteur d'événements lors du démontage du composant
+    return () => {
+      window.removeEventListener('beforeunload', handleNavigation);
+    };
+  }, []);
+
   return (
     <div className="relative h-screen overflow-hidden">
       <video

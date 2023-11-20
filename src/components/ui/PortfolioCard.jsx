@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const PortfolioCard = ({ id, title, type }) => {
   return (
-    <Link to={`/portfolio/${id}`}>
     <div className="text-white w-full hover:bg-slate-500">
+    <Link to={`/portfolio/${id}`}>
       <div className="flex justify-between p-2 group ">
         <h1 className="font-bold text-medium text-codedragi-blue relative">
           {title}
@@ -12,8 +12,8 @@ const PortfolioCard = ({ id, title, type }) => {
         <p>{type}</p>
       </div>
       <hr />
-    </div>
     </Link>
+  </div>
   );
 };
 

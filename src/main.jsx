@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './Config/AuthContext.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// Mettez à jour l'importation de createRoot
+import { createRoot } from 'react-dom/client';
+
+// Utilisez createRoot pour rendre votre application
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </AuthProvider>
   </React.StrictMode>
 );

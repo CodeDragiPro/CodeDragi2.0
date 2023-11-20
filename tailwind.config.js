@@ -10,6 +10,7 @@ export default {
       colors: {
         'codedragi-pink': '#FF48B0',
         'codedragi-blue': '#66D9ED',
+        'codedragi-gray':'#101826',
       }
     },
   },

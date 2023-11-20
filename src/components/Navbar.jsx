@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-import { useAuth } from "../Config/AuthContext";
-
 import logoWeb from "../assets/logoWeb.png";
-
-import { FaUserSecret, FaCode, FaTimes, FaSignOutAlt } from "react-icons/fa";
+import NavBck from '../assets/nav.jpg';
+import { FaCode, FaTimes } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated, signOut } = useAuth();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -24,12 +20,15 @@ const Navbar = () => {
   const hasPortfolioId =
     location.pathname.includes("/portfolio/") ||
     location.pathname === "/login" ||
-    location.pathname === "/admin" ||
-    location.pathname === "/admin/new" ||
-    location.pathname === "/admin/list";
+    location.pathname === "/dashboard" ||
+    location.pathname === "/dashboard/new" ||
+    location.pathname === "/dashboard/list";
 
   return (
-    <nav className="p-2 flex justify-between items-center fixed w-full z-50 text-white bg-black">
+    <nav
+    className="p-2 flex justify-between items-center fixed w-full z-50 text-white top-0"
+    style={{ backgroundImage: `url(${NavBck})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+  >
       <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
         <img src={logoWeb} className="w-40" alt="Logo" />
       </Link>
@@ -54,17 +53,17 @@ const Navbar = () => {
             </a>
           </>
         )}
-        {(location.pathname === "/admin" ||
-          location.pathname === "/admin/new" ||
-          location.pathname === "/admin/list") && (
+        {(location.pathname === "/dashboard" ||
+          location.pathname === "/dashboard/new" ||
+          location.pathname === "/dashboard/list") && (
           <>
-            <Link to="/admin" onClick={closeMobileMenu}>
+            <Link to="/dashboard" onClick={closeMobileMenu}>
               Dashboard
             </Link>
-            <Link to="/admin/new" onClick={closeMobileMenu}>
+            <Link to="/dashboard/new" onClick={closeMobileMenu}>
               Nouveau
             </Link>
-            <Link to="/admin/list" onClick={closeMobileMenu}>
+            <Link to="/dashboard/list" onClick={closeMobileMenu}>
               Liste
             </Link>
           </>
@@ -72,19 +71,10 @@ const Navbar = () => {
       </div>
 
       <div className="hidden md:flex text-white space-x-2">
-        {isAuthenticated ? (
-          <>
-            <FaSignOutAlt size={24} onClick={signOut} />
-
-            <Link to="/admin">
-              <IoMdSettings size={24} />
-            </Link>
-          </>
-        ) : (
-          <Link to="/login">
-            <FaUserSecret size={24} />
+       
+      <Link to="/dashboard">
+            <IoMdSettings size={24} />
           </Link>
-        )}
       </div>
 
       <div className="md:hidden text-white" onClick={toggleMobileMenu}>
@@ -119,17 +109,17 @@ const Navbar = () => {
           </a>
         </>
       )}
-      {(location.pathname === "/admin" ||
-        location.pathname === "/admin/new" ||
-        location.pathname === "/admin/list") && (
+      {(location.pathname === "/dashboard" ||
+        location.pathname === "/dashboard/new" ||
+        location.pathname === "/dashboard/list") && (
         <>
-          <Link to="/admin" onClick={closeMobileMenu}>
+          <Link to="/dashboard" onClick={closeMobileMenu}>
             Dashboard
           </Link>
-          <Link to="/admin/new" onClick={closeMobileMenu}>
+          <Link to="/dashboard/new" onClick={closeMobileMenu}>
             Nouveau
           </Link>
-          <Link to="/admin/list" onClick={closeMobileMenu}>
+          <Link to="/dashboard/list" onClick={closeMobileMenu}>
             Liste
           </Link>
         </>
@@ -137,18 +127,9 @@ const Navbar = () => {
     </div>
 
     <div className="fixed bottom-0 mb-12 flex items-center justify-center space-x-2">
-      {isAuthenticated ? (
-        <>
-          <FaSignOutAlt size={24} onClick={() => { signOut(); closeMobileMenu(); }} />
-          <Link to="/admin" onClick={closeMobileMenu}>
+    <Link to="/signin">
             <IoMdSettings size={24} />
           </Link>
-        </>
-      ) : (
-        <Link to="/login" onClick={closeMobileMenu}>
-          <FaUserSecret size={24} />
-        </Link>
-      )}
     </div>
   </div>
 )}

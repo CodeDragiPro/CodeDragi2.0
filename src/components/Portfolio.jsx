@@ -118,29 +118,27 @@ const Portfolio = () => {
             ))}
           </div>
           <div className="pt-2">
-            {currentItems.map((item, index) => (
-              <div
-                key={item.id}
-                onMouseEnter={() => handlePortfolioHover(index)}
-                onMouseLeave={() => handlePortfolioHover(-1)}
-              >
-                {item  && (
-                  <Link to={`/portfolio/${item.id}`}>
-                    <PortfolioCard
-                      id={item.id}
-                      image={
-                        item.images && item.images.length > 0
-                          ? item.images[0]
-                          : "chemin/par/défaut.jpg"
-                      }
-                      title={item.title}
-                      type={item.selectedTypes && item.selectedTypes.join(', ')}
-                    />
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
+  {currentItems.map((item, index) => (
+    <div
+      key={item.id}
+      onMouseEnter={() => handlePortfolioHover(index)}
+      onMouseLeave={() => handlePortfolioHover(-1)}
+    >
+      {item && (
+        <PortfolioCard
+          id={item.id}
+          image={
+            item.images && item.images.length > 0
+              ? item.images[0]
+              : "chemin/par/défaut.jpg"
+          }
+          title={item.title}
+          type={item.selectedTypes && item.selectedTypes.join(', ')}
+        />
+      )}
+    </div>
+  ))}
+</div>
           <ul className="flex text-white mt-4">
             {Array.from({
               length: Math.ceil(filteredData.length / itemsPerPage),

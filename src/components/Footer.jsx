@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-900 mx-auto py-8  text-white ">
+    <div className="bg-gray-900 mx-auto py-8  text-white bottom-0 ">
       <div className="">
         <div>
           <div className="">

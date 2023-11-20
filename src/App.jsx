@@ -6,48 +6,64 @@ import PortfolioContent from "./pages/PortfolioContent";
 import { AnimatePresence } from "framer-motion";
 import ParticlesBg from "./components/Design/ParticlesBg";
 import Footer from "./components/Footer";
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import SignIn from "./pages/Auth/SignIn";
+import Dashboard from "./pages/admin/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
 import AdminNew from "./pages/admin/AdminNew";
 import AdminList from "./pages/admin/AdminList";
-import { useAuth } from "./Config/AuthContext";
+import { AuthContextProvider } from "./Config/AuthContext";
+import ProtectedRoute from './ProtectedRoute';
+import { ToastContainer, Zoom } from 'react-toastify';
 
-const PrivateRoute = ({ element }) => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? element : <Navigate to="/login" />;
-};
+
 
 function App() {
-  const location = useLocation();
+
 
   return (
     <div>
       <Navbar />
+      <AuthContextProvider>
       <ParticlesBg />
       <AnimatePresence initial={false} mode="wait">
         <div className="">
-          <Routes location={location} key={location.pathname}>
+          <Routes >
             <Route path="/" element={<HomePage />} />
             <Route path="/portfolio/:id" element={<PortfolioContent />} />
             <Route path="*" element={<ErrorPage />} />
-            <Route path="/login" element={<AdminLogin />} />
+            <Route path="/signin" element={<SignIn />} />
             {/* PROTECTED ROUTES */}
             <Route
-              path="/admin/*"
-              element={<PrivateRoute element={<AdminDashboard />} />}
-            />
-            <Route
-              path="/admin/new"
-              element={<PrivateRoute element={<AdminNew />} />}
-            />
-            <Route
-              path="/admin/list"
-              element={<PrivateRoute element={<AdminList />} />}
-            />
+            path='/dashboard'
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+             <Route
+            path='/dashboard/new'
+            element={
+              <ProtectedRoute>
+                <AdminNew />
+              </ProtectedRoute>
+            }
+          />
+             <Route
+            path='/dashboard/list'
+            element={
+              <ProtectedRoute>
+                <AdminList />
+              </ProtectedRoute>
+            }
+          />
           </Routes>
+          <ToastContainer 
+        transition={Zoom}
+        />
         </div>
       </AnimatePresence>
+      </AuthContextProvider>
       <Footer />
     </div>
   );

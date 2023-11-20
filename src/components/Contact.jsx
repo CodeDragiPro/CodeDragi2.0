@@ -6,6 +6,7 @@ import avatar from '../assets/avatar.jpg';
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from "./ui/Button";
 
 
 const Contact = () => {
@@ -61,8 +62,8 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-full ">
-        <div>
-          <form ref={form} id="contact-form" onSubmit={sendEmail}>
+        <div className="bg-codedragi-gray p-4 rounded-md">
+          <form ref={form} id="contact-form" onSubmit={sendEmail} autoComplete="on">
             <div className="mb-4">
               <label htmlFor="user_name" className="block text-codedragi-blue font-bold mb-2 text-left">
                 Nom:
@@ -73,6 +74,7 @@ const Contact = () => {
                 name="from_name"
                 className="w-full p-2 bg-gray-900 text-white border border-codedragi-blue rounded outline-none"
                 placeholder="Votre nom"
+                required
               />
             </div>
             <div className="mb-4">
@@ -83,8 +85,10 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="user_email"
-                className="w-full p-2 bg-gray-900 text-white border border-codedragi-blue rounded outline-none"
+                className="w-full p-2 bg-codedragi-gray text-white border border-codedragi-blue rounded outline-none"
                 placeholder="Votre email"
+                required
+                autoComplete="on"
               />
             </div>
             <div className="mb-4">
@@ -96,16 +100,11 @@ const Contact = () => {
                 name="message"
                 className="w-full p-2 bg-gray-900 text-white border border-codedragi-blue rounded outline-none"
                 placeholder="Votre message"
+                required
               ></textarea>
             </div>
-            <button
-              type="submit"
-              className="bg-codedragi-blue text-white font-bold py-2 px-4 rounded hover-bg-codedragi-blue-dark transition duration-300"
-            >
-              Envoyer
-            </button>
+           <Button text="Envoyer"/>
           </form>
-          <ToastContainer position="top-right" autoClose={3000} />
         </div>
       </div>
     </div>
