@@ -37,9 +37,7 @@ const Dashboard = () => {
     try {
       const db = getFirestore();
       const notesCollection = collection(db, "notes");
-      const notesSnapshot = await getDocs(
-        query(notesCollection, orderBy("timestamp", "desc"))
-      );
+      const notesSnapshot = await getDocs(query(notesCollection, orderBy("timestamp", "desc")));
       const notesData = [];
       notesSnapshot.forEach((doc) => {
         notesData.push({ id: doc.id, ...doc.data() });
@@ -144,11 +142,11 @@ const Dashboard = () => {
 
   const handleDeleteClick = async (noteId) => {
     confirmAlert({
-      title: "Confirmer la suppression",
-      message: "Êtes-vous sûr de vouloir supprimer cette note ?",
+      title: 'Confirmer la suppression',
+      message: 'Êtes-vous sûr de vouloir supprimer cette note ?',
       buttons: [
         {
-          label: "Oui",
+          label: 'Oui',
           onClick: async () => {
             try {
               const db = getFirestore();
@@ -158,24 +156,19 @@ const Dashboard = () => {
               Toast({ type: "success", message: "Note supprimé avec succès" });
               console.log("Note deleted successfully");
             } catch (error) {
-              Toast({
-                type: "error",
-                message: "Erreur lors de l'ajout de la note",
-              });
-              console.error(
-                "Erreur lors de la suppression de la note :",
-                error
-              );
+              Toast({ type: "error", message: "Erreur lors de l'ajout de la note" });
+              console.error("Erreur lors de la suppression de la note :", error);
             }
           },
         },
         {
-          label: "Non",
+          label: 'Non',
           onClick: () => {},
         },
       ],
     });
   };
+  
 
   return (
     <div className="md:h-screen h-full  mx-4 md:flex text-white mt-20">
@@ -231,16 +224,18 @@ const Dashboard = () => {
 
           {/* Carte des notes */}
           <div className="w-full">
-            {notes.map((note) => (
-              <div key={note.id}>
-                <NoteCard
-                  noteId={note.id}
-                  noteTitle={note.title}
-                  noteDescription={note.description}
-                  onDeleteClick={(id) => handleDeleteClick(id)}
-                />
-              </div>
-            ))}
+          {notes.map((note) => (
+  <div key={note.id}>
+    <NoteCard
+      noteId={note.id}
+      noteTitle={note.title}
+      noteDescription={note.description}
+      onDeleteClick={(id) => handleDeleteClick(id)}  
+    />
+  </div>
+))}
+
+
           </div>
         </div>
       </div>
