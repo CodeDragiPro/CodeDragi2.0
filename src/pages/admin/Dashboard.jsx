@@ -3,7 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { UserAuth } from "../../Config/AuthContext";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getDocs,
+  query,
+  collection,
+  orderBy,
+  getFirestore,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import ReactApexChart from "react-apexcharts";
 import { FaPlus, FaUsers } from "react-icons/fa6";
 import avatar from "../../assets/avatar.jpg";
@@ -11,15 +19,36 @@ import Button from "../../components/ui/Button";
 import NoteModal from "../../components/ui/NoteModale";
 import { RiGalleryUploadFill } from "react-icons/ri";
 import { FaClipboardList } from "react-icons/fa";
+import NoteCard from "../../components/ui/NoteCard";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import Toast from "../../components/ui/Toast";
 
 const Dashboard = () => {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
-
   const [portfolioData, setPortfolioData] = useState([]);
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [notes, setNotes] = useState([]);
+
+  const fetchNotes = async () => {
+    try {
+      const db = getFirestore();
+      const notesCollection = collection(db, "notes");
+      const notesSnapshot = await getDocs(
+        query(notesCollection, orderBy("timestamp", "desc"))
+      );
+      const notesData = [];
+      notesSnapshot.forEach((doc) => {
+        notesData.push({ id: doc.id, ...doc.data() });
+      });
+      setNotes(notesData);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des notes :", error);
+    }
+  };
 
   useEffect(() => {
     const fetchPortfolioData = async () => {
@@ -27,12 +56,10 @@ const Dashboard = () => {
         const db = getFirestore();
         const portfolioCollection = collection(db, "portfolio");
         const portfolioSnapshot = await getDocs(portfolioCollection);
-
         const data = [];
         portfolioSnapshot.forEach((doc) => {
           data.push(doc.data());
         });
-
         setPortfolioData(data);
       } catch (error) {
         console.error("Error fetching portfolio data:", error);
@@ -41,15 +68,11 @@ const Dashboard = () => {
 
     const updateDateTime = () => {
       const now = new Date();
-
       const formattedDate = format(now, "dd MMMM yyyy", { locale: fr });
-
       const hours = now.getHours().toString().padStart(2, "0");
       const minutes = now.getMinutes().toString().padStart(2, "0");
       const seconds = now.getSeconds().toString().padStart(2, "0");
-
       const formattedTime = `${hours}:${minutes}:${seconds}`;
-
       setCurrentDate(formattedDate);
       setCurrentTime(formattedTime);
     };
@@ -57,6 +80,7 @@ const Dashboard = () => {
     const intervalId = setInterval(updateDateTime, 1000);
 
     fetchPortfolioData();
+    fetchNotes();
 
     return () => clearInterval(intervalId);
   }, []);
@@ -118,6 +142,41 @@ const Dashboard = () => {
     setIsModalOpen(false);
   };
 
+  const handleDeleteClick = async (noteId) => {
+    confirmAlert({
+      title: "Confirmer la suppression",
+      message: "Êtes-vous sûr de vouloir supprimer cette note ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: async () => {
+            try {
+              const db = getFirestore();
+              const notesCollection = collection(db, "notes");
+              await deleteDoc(doc(notesCollection, noteId));
+              fetchNotes();
+              Toast({ type: "success", message: "Note supprimé avec succès" });
+              console.log("Note deleted successfully");
+            } catch (error) {
+              Toast({
+                type: "error",
+                message: "Erreur lors de l'ajout de la note",
+              });
+              console.error(
+                "Erreur lors de la suppression de la note :",
+                error
+              );
+            }
+          },
+        },
+        {
+          label: "Non",
+          onClick: () => {},
+        },
+      ],
+    });
+  };
+
   return (
     <div className="md:h-screen h-full  mx-4 md:flex text-white mt-20">
       {/* CONTAINER DROITE */}
@@ -152,7 +211,7 @@ const Dashboard = () => {
           </div>
 
           {/* Ajouter une note */}
-          <div className="bg-codedragi-gray rounded-md w-full md:mx-2 my-2 p-2">
+          <div className="bg-codedragi-gray rounded-md w-full  md:mx-2 my-2 p-2">
             <h1 className="text-2xl font-bold text-codedragi-blue">
               Ajouter une note
             </h1>
@@ -167,7 +226,22 @@ const Dashboard = () => {
               <FaPlus className="text-codedragi-blue font-bold" size={24} />
             </button>
           </div>
+          {/* Modale */}
           <NoteModal isOpen={isModalOpen} onClose={closeModal} />
+
+          {/* Carte des notes */}
+          <div className="w-full">
+            {notes.map((note) => (
+              <div key={note.id}>
+                <NoteCard
+                  noteId={note.id}
+                  noteTitle={note.title}
+                  noteDescription={note.description}
+                  onDeleteClick={(id) => handleDeleteClick(id)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
