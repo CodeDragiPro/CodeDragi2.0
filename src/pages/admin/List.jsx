@@ -7,10 +7,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import PortfolioEditModal from '../admin/PortfolioEditModale';
+import PortfolioEditModal from '../../components/ui/PortfolioEditModale';
  import { FaTrash, FaEdit } from "react-icons/fa";
 
-const AdminList = () => {
+const List = () => {
   const [data, setData] = useState([]);
   const [selectedPortfolio, setSelectedPortfolio] = useState(null);
 
@@ -122,4 +122,4 @@ const AdminList = () => {
   );
 };
 
-export default AdminList;
+export default List;

@@ -6,7 +6,7 @@ import TitlesCategory from './ui/TitlesCategory';
 import { FaReact, FaCss3, FaDatabase, FaHtml5, FaJs, FaFigma, FaNodeJs } from "react-icons/fa";
 import { SiAdobephotoshop, SiAdobeillustrator, SiFirebase, SiMysql } from "react-icons/si";
 
-const skills = [
+const skillsIcons = [
   { icon: <FaHtml5 className="text-codedragi-blue" size="4rem" />, text: 'HTML5' },
   { icon: <FaCss3 className="text-codedragi-blue" size="4rem" />, text: 'CSS' },
   { icon: <FaJs className="text-codedragi-blue" size="4rem" />, text: 'JavaScript' },
@@ -20,7 +20,7 @@ const skills = [
   { icon: <FaFigma className="text-codedragi-blue" size="4rem" />, text: 'Figma' },
 ];
 
-const Experience = () => {
+const Skills = () => {
   return (
     <div className="py-8 text-white w-full p-4 text-center" id="skills">
       <div className=' py-8 text-4xl '>
@@ -31,7 +31,7 @@ const Experience = () => {
       Explorez une mosaïque de technologies modernes avec lesquelles je jongle pour créer des solutions numériques innovantes.
           </p>
       <div className="flex flex-wrap justify-center items-center w-full">
-        {skills.map((skill, index) => (
+        {skillsIcons.map((skill, index) => (
           <IconSkills key={index} icon={skill.icon} text={skill.text} />
         ))}
       </div>
@@ -39,4 +39,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Skills;

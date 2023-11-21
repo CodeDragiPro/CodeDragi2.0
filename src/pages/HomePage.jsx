@@ -7,7 +7,7 @@ import Hero from "../components/Hero";
 import Expertise from "../components/Expertise";
 import Portfolio from "../components/Portfolio";
 import Contact from "../components/Contact";
-import Experience from "../components/Experience";
+import Skills from "../components/Skills";
 
 
 
@@ -32,7 +32,7 @@ const HomePage = () => {
       <div className="md:px-20">
         <Expertise />
         <Portfolio />
-        <Experience />
+        <Skills />
         <Contact />
       </div>
     </PageTransition>

@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AdminNew = () => {
+const New = () => {
   const titleRef = useRef();
   const clientRef = useRef();
   const brandRefs = useRef(Array(3).fill(null).map(() => React.createRef()));
@@ -280,4 +280,4 @@ const AdminNew = () => {
   );
 };
 
-export default AdminNew;
+export default New;

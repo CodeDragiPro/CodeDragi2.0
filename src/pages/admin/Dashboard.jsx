@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { UserAuth } from "../../Config/AuthContext";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import ReactApexChart from "react-apexcharts";
-import { FaPlus } from "react-icons/fa6";
-
+import { FaPlus, FaUsers } from "react-icons/fa6";
 import avatar from "../../assets/avatar.jpg";
 import Button from "../../components/ui/Button";
+import NoteModal from "../../components/ui/NoteModale";
+import { RiGalleryUploadFill } from "react-icons/ri";
+import { FaClipboardList } from "react-icons/fa";
 
 const Dashboard = () => {
   const { user, logout } = UserAuth();
@@ -17,6 +19,7 @@ const Dashboard = () => {
   const [portfolioData, setPortfolioData] = useState([]);
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchPortfolioData = async () => {
@@ -106,23 +109,82 @@ const Dashboard = () => {
       console.log(e.message);
     }
   };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="md:h-screen h-full">
-      {/* Section gauche */}
-      <div className="flex md:flex-row flex-col-reverse py-20 text-white p-2 text-center">
-        {/* Partie nombre de portfolios */}
-        <div className="p-2 md:w-1/3">
-          <div className="bg-gray-900 h-1/2 rounded-sm p-4 flex flex-col items-center justify-center">
-            <h1 className="text-2xl font-bold text-codedragi-blue mb-4">
+    <div className="md:h-screen h-full  mx-4 md:flex text-white mt-20">
+      {/* CONTAINER DROITE */}
+      <div className=" flex flex-col md:w-full">
+        {/* Carte utilisateur */}
+        <div className=" flex flex-col items-center md:pr-4  text-center">
+          <div className="bg-codedragi-gray rounded-md w-full h-full  md:mx-2 my-2 flex flex-col items-center mt-4 ">
+            <div className="p-2">
+              <h1 className="text-2xl font-bold text-codedragi-blue mb-4">
+                CodeDragi
+              </h1>
+              <img
+                src={avatar}
+                className="w-36 h-36  object-cover rounded-full border-2 border-white mb-2"
+              />
+              <Button text="Déconnexion" onClick={handleLogout} />
+            </div>
+          </div>
+
+          {/* Date */}
+          <div className="bg-codedragi-gray rounded-md w-full md:mx-2 my-2 p-2">
+            <h1 className="text-xl font-bold text-codedragi-blue ">
+              Nous sommes le :
+            </h1>
+            <p className="font-bold text-2xl">{currentDate}</p>
+          </div>
+
+          {/* Heure */}
+          <div className="bg-codedragi-gray rounded-md w-full md:mx-2 my-2 p-2">
+            <h1 className="text-xl font-bold text-codedragi-blue ">Il est :</h1>
+            <p className="font-bold text-2xl">{currentTime}</p>
+          </div>
+
+          {/* Ajouter une note */}
+          <div className="bg-codedragi-gray rounded-md w-full md:mx-2 my-2 p-2">
+            <h1 className="text-2xl font-bold text-codedragi-blue">
+              Ajouter une note
+            </h1>
+          </div>
+
+          {/* Bouton ajouter une note */}
+          <div className=" rounded-md w-full md:mx-2 my-2 p-2">
+            <button
+              className="bg-codedragi-gray p-4 rounded-full"
+              onClick={openModal}
+            >
+              <FaPlus className="text-codedragi-blue font-bold" size={24} />
+            </button>
+          </div>
+          <NoteModal isOpen={isModalOpen} onClose={closeModal} />
+        </div>
+      </div>
+
+      {/* CONTAINER GAUCHE */}
+      <div className=" flex flex-col w-full h-full md:order-first">
+        <div className=" md:flex block items-center justify-center text-center  md:p-2">
+          {/* Nombre de portfolio */}
+          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+            <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Nombre de portfolios
             </h1>
             <h2 className="text-8xl font-bold">{portfolioData.length}</h2>
           </div>
-        </div>
-        {/* Partie graphique portfolio */}
-        <div className="p-2 md:w-1/3">
-          <div className="bg-gray-900 h-1/2 rounded-sm p-4 flex flex-col items-center justify-center">
-            <h1 className="text-2xl font-bold text-codedragi-blue mb-4">
+
+          {/* Statistique portfolio */}
+          <div className="bg-codedragi-gray rounded-md md:w-64 w-full md:h-64 p-4 h-full md:mx-2 my-2 flex flex-col items-center justify-evenly">
+            <h1 className="text-xl font-bold text-codedragi-blue">
               Répartition des types de portfolios
             </h1>
             <ReactApexChart
@@ -131,59 +193,49 @@ const Dashboard = () => {
               options={generateChartData().options}
             />
           </div>
-        </div>
-        {/* Partie Dernier portfolio*/}
-        <div className="p-2 md:w-1/3">
-          <div className="bg-gray-900 h-1/2 rounded-sm p-4 flex flex-col items-center justify-center">
-            <h1 className="text-2xl font-bold text-codedragi-blue mb-4">
+
+          {/* Dernier portfolio */}
+          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+            <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Dernier portfolio
             </h1>
-            <p className="text-4xl font-bold">12 Janvier 2023</p>
+            <p className="text-2xl font-bold">12 Janvier 2023</p>
           </div>
         </div>
-        {/* Section Droite */}
-        <div className="p-2 md:w-1/3">
-          {/* Partie carte utilisateur */}
-          <div className="bg-gray-900 h-1/2 rounded-sm p-4 flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-bold text-codedragi-blue mb-4">
-              CodeDragi
-            </h1>
-            <img
-              src={avatar}
-              className="w-36 h-36  object-cover rounded-full border-2 border-white mb-2"
-            />
-            <Button text="Déconnexion" onClick={handleLogout} />
-          </div>
-          {/* Partie date */}
-          <div className="bg-gray-900  rounded-sm p-4 flex flex-col items-center justify-center mt-4">
+
+        <div className=" md:flex block items-center justify-between text-center px-2">
+          {/* Ajouter un nouveau portfolio */}
+          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
             <h1 className="text-xl font-bold text-codedragi-blue mb-4">
-              Nous sommes le :
+              Ajouter un portfolio
             </h1>
-            <div className="bg-[#02050a] p-2 rounded-md">
-              <p className="font-bold text-xl">{currentDate}</p>
-            </div>
-          </div>
-          {/* Partie heure */}
-          <div className="bg-gray-900  rounded-sm p-4 flex flex-col items-center justify-center mt-4">
-            <h1 className="text-xl font-bold text-codedragi-blue mb-4">
-              Il est :
-            </h1>
-            <div className="bg-[#02050a] p-2 rounded-md">
-              <p className="font-bold text-xl">{currentTime}</p>
-            </div>
+            <Link to="/dashboard/new" className="bg-[#1e1e1e] rounded-full p-4">
+              <RiGalleryUploadFill className="text-codedragi-blue text-6xl" />
+            </Link>
           </div>
 
-          {/* Partie ajouter un portfolio */}
-          <div className="bg-gray-900  rounded-sm p-4 flex flex-col items-center justify-center mt-4">
-            <h1 className="text-2xl font-bold text-codedragi-blue">
-              Ajouter une note
+          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+            <h1 className="text-xl font-bold text-codedragi-blue mb-4">
+              Liste des portfolios
             </h1>
+            <Link
+              to="/dashboard/list"
+              className="bg-[#1e1e1e] rounded-full p-4"
+            >
+              <FaClipboardList className="text-codedragi-blue text-6xl" />
+            </Link>
           </div>
 
-          <div className=" p-4 flex flex-col items-center justify-center mt-4">
-            <button className="bg-codedragi-gray p-4 rounded-full">
-              <FaPlus className="text-codedragi-blue font-bold" size={24} />
-            </button>
+          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+            <h1 className="text-xl font-bold text-codedragi-blue mb-4">
+              Liste des clients
+            </h1>
+            <Link
+              to="/dashboard/list"
+              className="bg-[#1e1e1e] rounded-full p-4"
+            >
+              <FaUsers className="text-codedragi-blue text-6xl" />
+            </Link>
           </div>
         </div>
       </div>

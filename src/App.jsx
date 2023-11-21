@@ -9,8 +9,8 @@ import Footer from "./components/Footer";
 import SignIn from "./pages/Auth/SignIn";
 import Dashboard from "./pages/admin/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
-import AdminNew from "./pages/admin/AdminNew";
-import AdminList from "./pages/admin/AdminList";
+import New from "./pages/admin/New";
+import List from "./pages/admin/List";
 import { AuthContextProvider } from "./Config/AuthContext";
 import ProtectedRoute from './ProtectedRoute';
 import { ToastContainer, Zoom } from 'react-toastify';
@@ -45,7 +45,7 @@ function App() {
             path='/dashboard/new'
             element={
               <ProtectedRoute>
-                <AdminNew />
+                <New />
               </ProtectedRoute>
             }
           />
@@ -53,7 +53,7 @@ function App() {
             path='/dashboard/list'
             element={
               <ProtectedRoute>
-                <AdminList />
+                <List />
               </ProtectedRoute>
             }
           />
