@@ -33,8 +33,8 @@ const PortfolioEditModal = ({ portfolio, closeModal, updatePortfolio }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="bg-gray-900 p-6 rounded-lg max-w-md overflow-y-scroll max-h-screen">
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+      <div className="bg-gray-900  rounded-lg  overflow-y-scroll max-h-screen w-full p-4">
         <h2 className="text-2xl font-semibold mb-4 text-codedragi-blue text-center">
           Modifier le Portfolio
         </h2>

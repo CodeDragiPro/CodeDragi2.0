@@ -78,7 +78,7 @@ const PortfolioContent = () => {
     <meta name="author" content="CodeDragi"/>
     <meta name="robots" content="index, follow"/>
       </Helmet>
-    <div className="py-20 md:mx-20  text-white p-4 ">
+    <div className=" md:mx-20  text-white p-4 ">
       {portfolio ? (
         <div>
           <p className="text-4xl font-bold uppercase">{portfolio.title}</p>

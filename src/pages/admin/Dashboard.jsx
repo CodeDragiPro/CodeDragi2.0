@@ -171,14 +171,14 @@ const Dashboard = () => {
   
 
   return (
-    <div className="md:h-screen h-full  mx-4 md:flex text-white mt-20">
+    <div className="md:h-screen h-full  md:flex text-white  p-4">
       {/* CONTAINER DROITE */}
-      <div className=" flex flex-col md:w-full">
+      <div className=" flex flex-col md:w-full md:mr-4 md:ml-1">
         {/* Carte utilisateur */}
-        <div className=" flex flex-col items-center md:pr-4  text-center">
-          <div className="bg-codedragi-gray rounded-md w-full h-full  md:mx-2 my-2 flex flex-col items-center mt-4 ">
+        <div className=" flex flex-col items-center  text-center">
+          <div className="bg-codedragi-gray rounded-md w-full h-full  md:mx-2 my-2 flex flex-col items-center ">
             <div className="p-2">
-              <h1 className="text-2xl font-bold text-codedragi-blue mb-4">
+              <h1 className="text-2xl font-bold text-codedragi-blue">
                 CodeDragi
               </h1>
               <img
@@ -198,14 +198,14 @@ const Dashboard = () => {
           </div>
 
           {/* Heure */}
-          <div className="bg-codedragi-gray rounded-md w-full md:mx-2 my-2 p-2">
+          <div className="bg-codedragi-gray rounded-md w-full md:mx-2 my-2 p-2 py-3">
             <h1 className="text-xl font-bold text-codedragi-blue ">Il est :</h1>
             <p className="font-bold text-2xl">{currentTime}</p>
           </div>
 
           {/* Ajouter une note */}
-          <div className="bg-codedragi-gray rounded-md w-full  md:mx-2 my-2 p-2">
-            <h1 className="text-2xl font-bold text-codedragi-blue">
+          <div className="bg-codedragi-gray rounded-md w-full  md:mx-2 my-2 p-2 pt-2">
+            <h1 className="text-2xl font-bold text-codedragi-blue py-2">
               Ajouter une note
             </h1>
           </div>
@@ -241,10 +241,10 @@ const Dashboard = () => {
       </div>
 
       {/* CONTAINER GAUCHE */}
-      <div className=" flex flex-col w-full h-full md:order-first">
-        <div className=" md:flex block items-center justify-center text-center  md:p-2">
+      <div className=" flex flex-col w-full  md:order-first md:ml-2 md:mr-1">
+        <div className=" md:flex block items-center justify-center text-center">
           {/* Nombre de portfolio */}
-          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+          <div className="bg-codedragi-gray rounded-md  w-full h-64 flex flex-col items-center justify-evenly md:m-2 mb-2">
             <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Nombre de portfolios
             </h1>
@@ -252,19 +252,21 @@ const Dashboard = () => {
           </div>
 
           {/* Statistique portfolio */}
-          <div className="bg-codedragi-gray rounded-md md:w-64 w-full md:h-64 p-4 h-full md:mx-2 my-2 flex flex-col items-center justify-evenly">
-            <h1 className="text-xl font-bold text-codedragi-blue">
-              Répartition des types de portfolios
-            </h1>
-            <ReactApexChart
-              type="donut"
-              series={generateChartData().series}
-              options={generateChartData().options}
-            />
-          </div>
+          <div className="bg-codedragi-gray rounded-md w-full md:h-64 h-full flex flex-col items-center justify-evenly md:m-2 mb-2">
+  <h1 className="text-xl font-bold text-codedragi-blue ">
+    Répartition des types de portfolios
+  </h1>
+  <div className="md:w-[20vh] object-cover" >
+    <ReactApexChart
+      type="donut"
+      series={generateChartData().series}
+      options={generateChartData().options}
+    />
+  </div>
+</div>
 
           {/* Dernier portfolio */}
-          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+          <div className="bg-codedragi-gray rounded-md  w-full h-64 flex flex-col items-center justify-evenly md:m-2 mb-2">
             <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Dernier portfolio
             </h1>
@@ -272,9 +274,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className=" md:flex block items-center justify-between text-center px-2">
+        <div className=" md:flex block items-center justify-between text-center">
           {/* Ajouter un nouveau portfolio */}
-          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+          <div className="bg-codedragi-gray rounded-md  w-full h-64 flex flex-col items-center justify-evenly md:m-2 mb-2">
             <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Ajouter un portfolio
             </h1>
@@ -283,7 +285,7 @@ const Dashboard = () => {
             </Link>
           </div>
 
-          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+          <div className="bg-codedragi-gray rounded-md  w-full h-64 flex flex-col items-center justify-evenly md:m-2 mb-2">
             <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Liste des portfolios
             </h1>
@@ -295,7 +297,7 @@ const Dashboard = () => {
             </Link>
           </div>
 
-          <div className="bg-codedragi-gray rounded-md md:w-64 w-full h-64 flex flex-col items-center justify-evenly md:mx-2 my-2">
+          <div className="bg-codedragi-gray rounded-md  w-full h-64 flex flex-col items-center justify-evenly md:m-2 mb-2 ">
             <h1 className="text-xl font-bold text-codedragi-blue mb-4">
               Liste des clients
             </h1>

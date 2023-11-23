@@ -45,7 +45,7 @@ const NoteModal = ({ isOpen, onClose }) => {
           ></div>
           <div className="bg-codedragi-gray md:w-1/2 w-full  p-4 rounded-lg overflow-y-auto m-8 relative">
             <button
-              className="close-button  top-4 right-4 mt-20 fixed"
+              className="close-button  top-4 right-4 fixed"
               onClick={onClose}
             >
               <FaTimes size={24} />

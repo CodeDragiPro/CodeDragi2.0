@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav
-    className="p-2 flex justify-between items-center fixed w-full z-50 text-white top-0"
+    className="p-2 flex justify-between items-center  w-full z-50 text-white top-0"
     style={{ backgroundImage: `url(${NavBck})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
   >
       <Link to="/" className="flex items-center" onClick={closeMobileMenu}>

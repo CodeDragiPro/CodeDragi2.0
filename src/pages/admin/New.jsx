@@ -1,22 +1,28 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../Config/firebase";
 import { addDoc, collection } from "firebase/firestore/lite";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { toast, ToastContainer } from "react-toastify";
+import Toast from "../../components/ui/Toast";
 import "react-toastify/dist/ReactToastify.css";
 
 const New = () => {
+  const navigate = useNavigate();
   const titleRef = useRef();
   const clientRef = useRef();
-  const brandRefs = useRef(Array(3).fill(null).map(() => React.createRef()));
+  const brandRefs = useRef(
+    Array(3)
+      .fill(null)
+      .map(() => React.createRef())
+  );
   const fontRef = useRef();
   const descriptionRef = useRef();
   const linkRef = useRef();
   const imageRef = useRef();
+  const graphicsImageRef = useRef();
 
-  
   const types = ["Développement web", "Web Design", "Graphisme"];
   const typeRefs = types.map(() => useRef());
 
@@ -35,10 +41,6 @@ const New = () => {
 
   const submitPortfolio = (e) => {
     e.preventDefault();
-    toast.info("Envoi des données en cours", {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 2000, 
-    });
     const title = titleRef.current.value;
     const client = clientRef.current.value;
     const brands = brandColors;
@@ -46,8 +48,8 @@ const New = () => {
     const description = descriptionRef.current.value;
     const link = linkRef.current.value;
     const images = imageRef.current.files;
+    const graphicsImages = graphicsImageRef.current.files;
     const date = selectedDate;
-
 
     const selectedCategories = categoryRefs
       .map((ref, index) => ({
@@ -72,7 +74,20 @@ const New = () => {
       imageUploadPromises.push(uploadPromise);
     }
 
-    Promise.all(imageUploadPromises)
+    const graphicsImageUploadPromises = [];
+    for (const graphicsImage of graphicsImages) {
+      const graphicsStorageRef = ref(
+        storage,
+        `portfolio_graphics/${graphicsImage.name}`
+      );
+      const graphicsUploadPromise = uploadBytes(
+        graphicsStorageRef,
+        graphicsImage
+      );
+      graphicsImageUploadPromises.push(graphicsUploadPromise);
+    }
+
+    Promise.all(imageUploadPromises.concat(graphicsImageUploadPromises))
       .then((snapshots) => {
         const downloadUrls = snapshots.map((snapshot) =>
           getDownloadURL(snapshot.ref)
@@ -80,7 +95,8 @@ const New = () => {
         return Promise.all(downloadUrls);
       })
       .then((downloadUrls) => {
-        const imageUrls = downloadUrls.map((url) => url);
+        const imageUrls = downloadUrls.slice(0, images.length);
+        const graphicsImageUrls = downloadUrls.slice(images.length);
         savePortfolio({
           title,
           client,
@@ -89,14 +105,13 @@ const New = () => {
           description,
           link,
           images: imageUrls,
+          graphicsImages: graphicsImageUrls,
           date,
           selectedCategories,
           selectedTypes,
         });
-       
-      
       })
-      
+
       .catch((error) => {
         console.error(error);
         savePortfolio({
@@ -107,174 +122,254 @@ const New = () => {
           description,
           link,
           images: [],
+          graphicsImages: [],
           date,
           resume,
           selectedCategories,
           selectedTypes,
         });
-       
       });
   };
 
   const savePortfolio = async (portfolio) => {
     try {
       await addDoc(collection(db, "portfolio"), portfolio);
+
+      Toast({ type: "succes", message: "Portfolio envoyé avec succes" });
       setTimeout(() => {
-        navigate('/admin/list');
-      }, 500); 
-      toast.success("Données envoyées avec succès", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
+        navigate("/dashboard/list");
+      }, 500);
     } catch (error) {
+      Toast({ type: "error", message: "Erreur lors de l'envoi des données" });
       console.error("Failed to add portfolio", error);
-      toast.error("Une erreur s'est produite lors de l'envoi", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 2000,
-      });
     }
   };
 
   return (
-    <div className="max-w-screen-md mx-auto py-20 p-4">
-      <h1 className="text-codedragi-blue text-center font-bold py-2 text-2xl">Ajouter un Portfolio</h1>
-      <form onSubmit={submitPortfolio} className="space-y-4  bg-gray-900 border border-codedragi-blue p-8 rounded">
-        <div>
-          <label htmlFor="title" className="text-lg font-bold text-codedragi-blue">
-            Titre :
-          </label>
-          <input
-            type="text"
-            id="title"
-            className="w-full p-2  rounded focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-            ref={titleRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="client" className="text-lg font-bold text-codedragi-blue">
-            Client :
-          </label>
-          <input
-            type="text"
-            id="client"
-            className="w-full p-2 rounded focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-            ref={clientRef}
-          />
-        </div>
-        <div>
-          <label className="text-lg font-bold text-codedragi-blue">Charte Graphique :</label>
-          {brandColors.map((color, index) => (
-            <div key={index} className="flex items-center space-x-2 mt-2">
+    <div className="p-4 py-12">
+      <form onSubmit={submitPortfolio}>
+        <div className="bg-codedragi-gray h-full p-4 rounded-md">
+          <div className="p-2">
+            <h1 className="font-bold text-2xl text-white">Details</h1>
+            <hr />
+          </div>
+          <div className="flex md:flex-row flex-col  justify-center text-white">
+            {/* input */}
+            {/* Titre */}
+            <div className="md:w-1/2 w-full p-2">
+              <label
+                htmlFor="title"
+                className="text-lg font-bold text-codedragi-blue"
+              >
+                Titre :
+              </label>
               <input
                 type="text"
-                id={`brand-${index}`}
-                className="w-20 p-2 rounded focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-                ref={brandRefs.current[index]}
-                placeholder="#FFFFFF"
-                onChange={() => handleBrandColorChange(index)}
+                id="title"
+                className="w-full p-2  rounded focus:outline-none bg-white   text-codedragi-gray"
+                ref={titleRef}
+                required
               />
-              <div
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  backgroundColor: color,
-                }}
-              ></div>
+              {/* Client */}
+              <div className="mt-2">
+                <label
+                  htmlFor="client"
+                  className="text-lg font-bold text-codedragi-blue"
+                >
+                  Client :
+                </label>
+                <input
+                  type="text"
+                  id="client"
+                  className="w-full p-2  rounded focus:outline-none bg-white   text-codedragi-gray"
+                  ref={clientRef}
+                  required
+                />
+              </div>
+              {/* Lien */}
+              <div className="mt-2">
+                <label
+                  htmlFor="link"
+                  className="text-lg font-bold text-codedragi-blue"
+                >
+                  Lien :
+                </label>
+                <input
+                  type="text"
+                  id="link"
+                  className="w-full p-2  rounded focus:outline-none bg-white   text-codedragi-gray"
+                  ref={linkRef}
+                  required
+                />
+              </div>
             </div>
-          ))}
-        </div>
-        <div>
-          <label htmlFor="font" className="text-lg font-bold text-codedragi-blue">
-            Font :
-          </label>
-          <input
-            type="text"
-            id="font"
-            className="w-full p-2 rounded focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-            ref={fontRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="description" className="text-lg font-bold text-codedragi-blue">
-            Description :
-          </label>
-          <textarea
-            id="description"
-            className="w-full p-2 rounded focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-            ref={descriptionRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="images" className="text-lg font-bold text-codedragi-blue">
-            Images :
-          </label>
-          <input
-            type="file"
-            id="images"
-            className="w-full p-2 border-2 border-codedragi-blue rounded text-white focus:outline-none bg-gray-900"
-            ref={imageRef}
-            multiple
-          />
-        </div>
-        <div>
-          <label htmlFor="link" className="text-lg font-bold text-codedragi-blue">
-            Lien :
-          </label>
-          <input
-            type="text"
-            id="link"
-            className="w-full p-2 rounded focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-            ref={linkRef}
-          />
-        </div>
-        <div>
-          <label className="text-lg font-bold text-codedragi-blue">Date:</label>
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            placeholderText="Sélectionner une date"
-            className="w-full p-2 rounded mx-2 focus:outline-none bg-gray-900 border-codedragi-blue border-2 text-white"
-          />
-        </div>
-        <div>
-          <label className="text-lg font-bold text-codedragi-blue">Catégories :</label>
-          {categories.map((category, index) => (
-            <div key={index} className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id={category}
-                ref={categoryRefs[index]}
-                className="w-4 h-4 text-codedragi-blue"
-              />
-              <label htmlFor={category} className="text-lg text-codedragi-blue">
-                {category}
+            {/* Description */}
+            <div className="md:w-1/2 w-full md:p-0 p-2 ">
+              {/* Date */}
+              <div className="flex flex-col">
+                <label className="text-lg font-bold text-codedragi-blue mt-2">
+                  Date:
+                </label>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  placeholderText="Sélectionner une date"
+                  className="w-full p-2  rounded focus:outline-none bg-white   text-codedragi-gray"
+                  required
+                />
+              </div>
+              {/* Images */}
+              <div className="flex flex-col">
+                <div className="mt-2">
+                  <label
+                    htmlFor="images"
+                    className="text-lg font-bold text-codedragi-blue"
+                  >
+                    Images :
+                  </label>
+                  <input
+                    type="file"
+                    id="images"
+                    className="w-full p-2  rounded text-codedragi-gray focus:outline-none bg-white"
+                    ref={imageRef}
+                    multiple
+                    required
+                  />
+                </div>
+                {/* Description */}
+              </div>
+              <div className="mt-2">
+                <label
+                  htmlFor="description"
+                  className="text-lg font-bold text-codedragi-blue"
+                >
+                  Description :
+                </label>
+                <textarea
+                  id="description"
+                  className="w-full p-2  rounded focus:outline-none bg-white   text-codedragi-gray"
+                  ref={descriptionRef}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          {/* Technologie */}
+          <div className="flex flex-col md:p-2">
+            <label className="text-lg font-bold text-codedragi-blue flex items-center mt-2">
+              Technologie :
+            </label>
+            <div className="flex md:flex-row flex-col items-start md:space-x-2 ">
+              {categories.map((category, index) => (
+                <div
+                  key={index}
+                  className="flex md:flex-row  items-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    id={category}
+                    ref={categoryRefs[index]}
+                    className="w-4 h-4 text-codedragi-blue"
+                  />
+                  <label
+                    htmlFor={category}
+                    className="text-lg text-codedragi-blue"
+                  >
+                    {category}
+                  </label>
+                </div>
+              ))}
+            </div>
+            {/* Categorie */}
+            <label className="text-lg font-bold text-codedragi-blue mt-2">
+              Catégorie :
+            </label>
+            <div className="flex md:flex-row flex-col items-start md:space-x-2">
+              {types.map((type, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id={type}
+                    ref={typeRefs[index]}
+                    className="w-4 h-4 text-codedragi-blue"
+                  />
+                  <label htmlFor={type} className="text-lg text-codedragi-blue">
+                    {type}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Graphisme */}
+          <div className="p-2">
+            <h1 className="font-bold text-2xl text-white">Graphisme</h1>
+            <hr />
+          </div>
+          <div className="flex md:flex-row flex-col  justify-between md:items-center w-full pt-2">
+            <div>
+              <label
+                htmlFor="font"
+                className="text-lg font-bold text-codedragi-blue"
+              >
+                Police :
               </label>
-            </div>
-          ))}
-        </div>
-        <div>
-          <label className="text-lg font-bold text-codedragi-blue">Type :</label>
-          {types.map((type, index) => (
-            <div key={index} className="flex items-center space-x-2">
               <input
-                type="checkbox"
-                id={type}
-                ref={typeRefs[index]}
-                className="w-4 h-4 text-codedragi-blue"
+                type="text"
+                id="font"
+                className="w-full p-2  rounded focus:outline-none bg-white   text-codedragi-gray"
+                ref={fontRef}
+                required
               />
-              <label htmlFor={type} className="text-lg text-codedragi-blue">
-                {type}
-              </label>
             </div>
-          ))}
+            {/* Charte Graphique */}
+            <div className="md:pl-4 md:pt-0 pt-2">
+              <label className="text-lg font-bold text-codedragi-blue">
+                Charte Graphique :
+              </label>
+              <div className="flex items-center space-x-4">
+                {brandColors.map((color, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="text"
+                      id={`brand-${index}`}
+                      className="w-20 p-2 rounded focus:outline-none bg-white  text-codedragi-gray"
+                      ref={brandRefs.current[index]}
+                      placeholder="#FFFFFF"
+                      onChange={() => handleBrandColorChange(index)}
+                      required
+                    />
+                  </div>
+                ))}
+                <div></div>
+              </div>
+            </div>
+            {/* Image du graphisme */}
+            <div className="md:pt-0 pt-2">
+              <label
+                htmlFor="images"
+                className="text-lg font-bold text-codedragi-blue"
+              >
+                Images Graphisme :
+              </label>
+              <input
+                type="file"
+                id="images"
+                className="w-full p-2  rounded text-codedragi-gray focus:outline-none bg-white"
+                ref={graphicsImageRef}
+                multiple
+                required
+              />
+            </div>
+          </div>
+          <div className="flex items-center justify-center mt-8">
+            <button
+              type="submit"
+              className="bg-white hover:bg-codedragi-gray hover:text-white text-codedragi-gray p-2 rounded hover:border hover:border-white"
+            >
+              Envoyer
+            </button>
+          </div>
         </div>
-        <button
-          type="submit"
-          className="bg-codedragi-blue text-white p-2 rounded hover:bg-gray-900 hover:border-codedragi-blue"
-        >
-          Envoyer
-        </button>
-        <ToastContainer />
       </form>
     </div>
   );

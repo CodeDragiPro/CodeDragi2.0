@@ -8,9 +8,8 @@ import {
 } from "firebase/firestore/lite";
 import { db } from "../../Config/firebase";
 import { confirmAlert } from "react-confirm-alert";
-import { toast, ToastContainer } from "react-toastify";
+import Toast from '../../components/ui/Toast'
 import "react-confirm-alert/src/react-confirm-alert.css";
-import "react-toastify/dist/ReactToastify.css";
 import PortfolioEditModal from "../../components/ui/PortfolioEditModale";
 import { FaTrash, FaEdit } from "react-icons/fa";
 
@@ -35,6 +34,7 @@ const List = () => {
         });
         setData(items);
       } catch (error) {
+        Toast({ type: "error", message: "Erreur lors de la récupération des données des portfolio" });
         console.error(
           "Erreur lors de la récupération des données des portfolios :",
           error
@@ -58,11 +58,9 @@ const List = () => {
               setData((prevData) =>
                 prevData.filter((item) => item.id !== documentId)
               );
-              toast.success("Portfolio supprimé avec succès", {
-                position: toast.POSITION.TOP_CENTER,
-                autoClose: 2000,
-              });
+              Toast({ type: "success", message: "Ajouté avec succès" });
             } catch (error) {
+              Toast({ type: "error", message: "Erreur lors de la suppression du document" });
               console.error(
                 "Erreur lors de la suppression du document :",
                 error
@@ -89,10 +87,7 @@ const List = () => {
       )
     );
     setSelectedItems([]);
-    toast.success("Portfolio modifié avec succès", {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 2000,
-    });
+    Toast({ type: "success", message: "Portfolio modifié avec succès" });
   };
 
   const toggleItem = (itemId) => {
@@ -122,11 +117,9 @@ const List = () => {
                 prevData.filter((item) => !selectedItems.includes(item.id))
               );
               setSelectedItems([]);
-              toast.success("Portfolios supprimés avec succès", {
-                position: toast.POSITION.TOP_CENTER,
-                autoClose: 2000,
-              });
+              Toast({ type: "success", message: "Portfolio supprimé avec succès" });
             } catch (error) {
+              Toast({ type: "error", message: "Erreur lors de la suppression des documents" });
               console.error(
                 "Erreur lors de la suppression des documents :",
                 error
@@ -168,7 +161,7 @@ const List = () => {
             {/* <th className="border-2 border-gray-300 p-2">Id</th> */}
             <th className="border-2 border-gray-300 p-2">Titre</th>
             <th className="border-2 border-gray-300 p-2">Client</th>
-            <th className="border-2 border-gray-300 p-2">Date</th>
+            {/* <th className="border-2 border-gray-300 p-2">Date</th> */}
             <th className="border-2 border-gray-300 p-2">Action</th>
           </tr>
         </thead>
@@ -185,9 +178,9 @@ const List = () => {
               {/* <td className="border-2 border-gray-300 p-2">{item.id}</td> */}
               <td className="border-2 border-gray-300 p-2">{item.title}</td>
               <td className="border-2 border-gray-300 p-2">{item.client}</td>
-              <td className="border-2 border-gray-300 p-2">
-                {item.date.toDate().toLocaleDateString()}
-              </td>
+              {/* <td className="border-2 border-gray-300 p-2">
+                {item.date.toDate}
+              </td> */}
               <td className="border-2 border-gray-300 p-2 text-center">
                 <button onClick={() => handleEditDocument(item.id)}>
                   <FaEdit className="text-codedragi-blue" />

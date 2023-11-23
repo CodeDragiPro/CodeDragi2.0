@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import TitlesCategory from "./ui/TitlesCategory";
 import avatar from '../assets/avatar.jpg';
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from "./ui/Button";
 
